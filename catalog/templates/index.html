@@ -1,4 +1,4 @@
-{% extends "base_generic.html" %}
+{% extends "base_generic.htm" %}
 
 {% block content %}
 <h1>Админ-панель</h1>
@@ -8,9 +8,9 @@
 
   <p>Что можно посмотреть в боте</p>
   <ul>
-    <li><strong>Пользователи</strong> {{ num_books }}</li>
-    <li><strong>События</strong> {{ num_instances }}</li>
-    <li><strong>Подарки</strong> {{ num_instances_available }}</li>
+    <li><strong>Пользователи</strong> {{ num_users }}</li>
+    <li><strong>События</strong> {{ num_events_gift }}</li>
+    <li><strong>Подарки</strong> {{ num_events_descript }}</li>
       </ul>
 
 {% endblock %}
