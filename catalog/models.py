@@ -123,15 +123,22 @@ class EventsDescript(models.Model):
     descript = models.CharField(max_length=300, blank=True, null=True, verbose_name="Описание события")
 
     class Meta:
+        verbose_name = 'Событие'
+        verbose_name_plural = 'События'
         managed = False
         db_table = 'events_descript'
 
 
 class EventsGift(models.Model):
-    id_event = models.IntegerField(blank=True, null=True)
-    id_gift = models.IntegerField(blank=True, null=True)
+    id_event = models.IntegerField(blank=True, null=True, verbose_name="Название события")
+    id_gift = models.IntegerField(blank=True, null=True, verbose_name="Название подарка")
+
+    # def display_event(self):
+    #     return ', '.join([EventsDescript.name for id_event in self.id_event[:3]])
 
     class Meta:
+        verbose_name = 'Подарки событий'
+        verbose_name_plural = 'Подарки событий'
         managed = False
         db_table = 'events_gift'
 
@@ -142,6 +149,8 @@ class GiftDescript(models.Model):
     img = models.CharField(max_length=300, blank=True, null=True, verbose_name="Картинка")
 
     class Meta:
+        verbose_name = 'Список подарков'
+        verbose_name_plural = 'Список подарков'
         managed = False
         db_table = 'gift_descript'
 
@@ -152,6 +161,8 @@ class GiftOuts(models.Model):
     id_event_gift = models.IntegerField(blank=True, null=True)
 
     class Meta:
+        verbose_name = 'Подарки пользователей'
+        verbose_name_plural = 'Подарки пользователей'
         managed = False
         db_table = 'gift_outs'
 
@@ -165,5 +176,7 @@ class Users(models.Model):
     dt_birth = models.DateTimeField(blank=True, null=True, verbose_name="Дата рождения")
 
     class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
         managed = False
         db_table = 'users'

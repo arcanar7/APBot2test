@@ -10,6 +10,7 @@ class EventsDescriptAdmin(admin.ModelAdmin):
 @admin.register(EventsGift)
 class EventsGiftAdmin(admin.ModelAdmin):
     pass
+    # list_display = ('display_event', 'id_gift')
 
 
 @admin.register(GiftDescript)
@@ -19,7 +20,7 @@ class GiftDescriptAdmin(admin.ModelAdmin):
 
 @admin.register(GiftOuts)
 class GiftOutsAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id_user', 'status', 'id_event_gift')
 
 
 @admin.register(Users)
