@@ -121,6 +121,7 @@ class DjangoSession(models.Model):
 class EventsDescript(models.Model):
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Название события")
     descript = models.CharField(max_length=300, blank=True, null=True, verbose_name="Описание события")
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Событие'
@@ -132,7 +133,7 @@ class EventsDescript(models.Model):
 class EventsGift(models.Model):
     id_event = models.IntegerField(blank=True, null=True, verbose_name="Название события")
     id_gift = models.IntegerField(blank=True, null=True, verbose_name="Название подарка")
-
+    objects = models.Manager()
     # def display_event(self):
     #     return ', '.join([EventsDescript.name for id_event in self.id_event[:3]])
 
@@ -174,6 +175,7 @@ class Users(models.Model):
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Имя пользователя")
     phone = models.CharField(max_length=30, blank=True, null=True, verbose_name="Телефон")
     dt_birth = models.DateTimeField(blank=True, null=True, verbose_name="Дата рождения")
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Пользователь'

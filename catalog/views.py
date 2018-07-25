@@ -16,5 +16,7 @@ def index(request):
         'index.html',
         context={'num_events_descript': num_events_descript, 'num_users': num_users, 'num_events_gift': num_events_gift},
     )
+
+
 class EventsDescriptListView(generic.ListView):
     model = EventsDescript
