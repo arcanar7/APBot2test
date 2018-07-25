@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import EventsDescript, EventsGift, Users
+from django.views import generic
 
 
 def index(request):
@@ -15,3 +16,5 @@ def index(request):
         'index.html',
         context={'num_events_descript': num_events_descript, 'num_users': num_users, 'num_events_gift': num_events_gift},
     )
+class EventsDescriptListView(generic.ListView):
+    model = EventsDescript
