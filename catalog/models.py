@@ -119,8 +119,8 @@ class DjangoSession(models.Model):
 
 
 class EventsDescript(models.Model):
-    name = models.CharField(max_length=300, blank=True, null=True)
-    descript = models.CharField(max_length=300, blank=True, null=True)
+    name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Название события")
+    descript = models.CharField(max_length=300, blank=True, null=True, verbose_name="Описание события")
 
     class Meta:
         managed = False
@@ -137,9 +137,9 @@ class EventsGift(models.Model):
 
 
 class GiftDescript(models.Model):
-    name = models.CharField(max_length=300, blank=True, null=True)
-    cnt = models.IntegerField(blank=True, null=True)
-    img = models.CharField(max_length=300, blank=True, null=True)
+    name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Название подарка")
+    cnt = models.IntegerField(blank=True, null=True, verbose_name="Количество")
+    img = models.CharField(max_length=300, blank=True, null=True, verbose_name="Картинка")
 
     class Meta:
         managed = False
@@ -157,12 +157,12 @@ class GiftOuts(models.Model):
 
 
 class Users(models.Model):
-    dt_add = models.DateTimeField(blank=True, null=True)
-    id_user = models.CharField(max_length=30, blank=True, null=True)
-    id_invite = models.CharField(max_length=300, blank=True, null=True)
-    name = models.CharField(max_length=300, blank=True, null=True)
-    phone = models.CharField(max_length=30, blank=True, null=True)
-    dt_birth = models.DateTimeField(blank=True, null=True)
+    dt_add = models.DateTimeField(blank=True, null=True, verbose_name="Дата регистрации")
+    id_user = models.CharField(max_length=30, blank=True, null=True, verbose_name="ID пользователя")
+    id_invite = models.CharField(max_length=300, blank=True, null=True, verbose_name="ID пригласившего")
+    name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Имя пользователя")
+    phone = models.CharField(max_length=30, blank=True, null=True, verbose_name="Телефон")
+    dt_birth = models.DateTimeField(blank=True, null=True, verbose_name="Дата рождения")
 
     class Meta:
         managed = False
