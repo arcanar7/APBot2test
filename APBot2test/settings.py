@@ -22,6 +22,8 @@ user = config["Bot Specific"]["user"]
 password = config["Bot Specific"]["password"]
 db = config["Bot Specific"]["db"]
 KEY = config["Bot Specific"]["SECRET_KEY"]
+engine = config["Bot Specific"]["engine"]
+port = config["Bot Specific"]["port"]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,12 +89,12 @@ WSGI_APPLICATION = 'APBot2test.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': engine,
         'NAME': db,
         'USER': user,
         'PASSWORD': password,
         'HOST': host,
-        'PORT': '3306',
+        'PORT': port,
     }
 }
 
