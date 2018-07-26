@@ -27,7 +27,13 @@
           <li><a href="{% url 'index' %}">Главная</a></li>
           <li><a href="">Все пользователи</a></li>
           <li><a href="{% url 'events_descript' %}">Все подарки событий</a></li>
-<li><a href=””>Все события</a></li>
+          <li><a href=””>Все события</a></li>
+          {% if user.is_authenticated %}
+            <li>User: {{ user.get_username }}</li>
+            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+   {% endif %}
       </ul>
      {% endblock %}
       </div>

@@ -71,6 +71,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        'DIRS': ['./templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,3 +141,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 INTERNAL_IPS = '127.0.0.1'
+LOGIN_REDIRECT_URL = '/'
