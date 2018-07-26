@@ -121,7 +121,9 @@ class DjangoSession(models.Model):
 class EventsDescript(models.Model):
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Название события")
     descript = models.CharField(max_length=300, blank=True, null=True, verbose_name="Описание события")
-    # objects = models.Manager()
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Событие'
@@ -133,7 +135,9 @@ class EventsDescript(models.Model):
 class EventsGift(models.Model):
     id_event = models.IntegerField(blank=True, null=True, verbose_name="Название события")
     id_gift = models.IntegerField(blank=True, null=True, verbose_name="Название подарка")
-    # objects = models.Manager()
+
+    def __str__(self):
+        return self.id_event
 
     def display_event(self):
         return EventsDescript.objects.filter(id=self.id_event).values("name")[0]['name']
@@ -156,6 +160,9 @@ class GiftDescript(models.Model):
     cnt = models.IntegerField(blank=True, null=True, verbose_name="Количество")
     img = models.CharField(max_length=300, blank=True, null=True, verbose_name="Картинка")
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Список подарков'
         verbose_name_plural = 'Список подарков'
@@ -167,6 +174,9 @@ class GiftOuts(models.Model):
     id_user = models.CharField(max_length=30, blank=True, null=True, verbose_name="ID пользователя")
     status = models.CharField(max_length=50, blank=True, null=True, verbose_name="Статус")
     id_event_gift = models.IntegerField(blank=True, null=True, verbose_name="Название подарка")
+
+    def __str__(self):
+        return self.id_user
 
     def display_gift(self):
         gift = EventsGift.objects.filter(id=self.id_event_gift).values("id_gift")[0]['id_gift']
@@ -188,7 +198,9 @@ class Users(models.Model):
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Имя пользователя")
     phone = models.CharField(max_length=30, blank=True, null=True, verbose_name="Телефон")
     dt_birth = models.DateTimeField(blank=True, null=True, verbose_name="Дата рождения")
-    # objects = models.Manager()
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Пользователь'
