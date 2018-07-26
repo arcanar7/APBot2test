@@ -9,8 +9,7 @@ class EventsDescriptAdmin(admin.ModelAdmin):
 
 @admin.register(EventsGift)
 class EventsGiftAdmin(admin.ModelAdmin):
-    pass
-    # list_display = ('display_event', 'id_gift')
+    list_display = ('display_event', 'id_gift')
 
 
 @admin.register(GiftDescript)
