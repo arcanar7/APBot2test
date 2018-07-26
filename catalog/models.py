@@ -136,8 +136,13 @@ class EventsGift(models.Model):
     # objects = models.Manager()
 
     def display_event(self):
-        event_id = list(EventsGift.objects.all().values_list("id_event", flat=True))
-        return EventsDescript.objects.filter(id__in=set(event_id)).values("name")
+        return EventsDescript.objects.filter(id=self.id_event).values("name")[0]['name']
+
+    def display_gift(self):
+        return GiftDescript.objects.filter(id=self.id_gift).values("name")[0]['name']
+
+    display_event.short_description = 'Событие'
+    display_gift.short_description = 'Подарок'
 
     class Meta:
         verbose_name = 'Подарки событий'
@@ -159,9 +164,15 @@ class GiftDescript(models.Model):
 
 
 class GiftOuts(models.Model):
-    id_user = models.CharField(max_length=30, blank=True, null=True)
-    status = models.CharField(max_length=50, blank=True, null=True)
-    id_event_gift = models.IntegerField(blank=True, null=True)
+    id_user = models.CharField(max_length=30, blank=True, null=True, verbose_name="ID пользователя")
+    status = models.CharField(max_length=50, blank=True, null=True, verbose_name="Статус")
+    id_event_gift = models.IntegerField(blank=True, null=True, verbose_name="Название подарка")
+
+    def display_gift(self):
+        gift = EventsGift.objects.filter(id=self.id_event_gift).values("id_gift")[0]['id_gift']
+        return GiftDescript.objects.filter(id=gift).values("name")[0]['name']
+
+    display_gift.short_description = 'Название подарка'
 
     class Meta:
         verbose_name = 'Подарки пользователей'
