@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Карточка событий</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="add_event/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="add_event/form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+       
+        <h2>Добро пожаловать</h2>
+        <p class="lead">Изменить данные о проводимых событиях</p>
+      </div>
+
+      <div class="row">
+       
+        <div class="col-md-8 order-md-1" style="margin: auto;">
+          <h4 class="mb-3">Карточка изменения событий (акций)</h4>
+          <form class="needs-validation" novalidate="">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name">Название события</label>
+                <input class="form-control" id="firstName" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Введите название события.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="dName">Описание события</label>
+                <input class="form-control" id="lastName" placeholder="" required="" type="text">
+                <div class="invalid-feedback">
+                  Введите описание события.
+                </div>
+              </div>
+            </div>
+
+           
+
+            
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить</button>
+			<button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить и добавить новое</button>
+			<button class="btn btn-primary btn-lg btn-block" type="submit">Удалить</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© Бот</p>
+        
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="add_event/jquery-3.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="add_event/popper.js"></script>
+    <script src="add_event/bootstrap.js"></script>
+    <script src="add_event/holder.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  
+
+</body></html>
