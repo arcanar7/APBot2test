@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_list_or_404
 from django.http import Http404
-from .models import EventsDescript, EventsGift, Users
+from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
 from django.views import generic
 
 
@@ -20,15 +20,6 @@ def index(request):
     )
 
 
-def detail(request):
-    # try:
-    #     users = Users.objects.all()
-    # except Users.DoesNotExist:
-    #     raise Http404("Question does not exist")
-    users = get_list_or_404(Users)
-    return render(request, 'catalog/users_list.html', {'users': users})
-
-
 class UsersListView(generic.ListView):
     model = Users
 
@@ -40,3 +31,18 @@ class EventsDescriptListView(generic.ListView):
 class EventsDescriptDetailView(generic.DetailView):
     model = EventsDescript
 
+
+class GiftDescriptListView(generic.ListView):
+    model = GiftDescript
+
+
+class GiftDescriptDetailView(generic.DetailView):
+    model = GiftDescript
+
+
+class GiftOutsListView(generic.ListView):
+    model = GiftOuts
+
+
+class GiftOutsDetailView(generic.DetailView):
+    model = GiftOuts

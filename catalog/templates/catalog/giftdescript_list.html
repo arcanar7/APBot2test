@@ -1,0 +1,19 @@
+{% extends "base_generic.htm" %}
+
+{% block content %}
+    <h1>Подарки</h1>
+
+    {% if giftdescript_list %}
+    <ul>
+
+      {% for giftDescript in giftdescript_list %}
+      <li>
+        <a href="{{ giftDescript.get_absolute_url }}">{{ giftDescript.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Пусто</p>
+    {% endif %}
+{% endblock %}

@@ -164,6 +164,9 @@ class GiftDescript(models.Model):
     cnt = models.IntegerField(blank=True, null=True, verbose_name="Количество")
     img = models.CharField(max_length=300, blank=True, null=True, verbose_name="Картинка")
 
+    def get_absolute_url(self):
+        return reverse('gift_descript-detail', args=[str(self.pk)])
+
     def __str__(self):
         return self.name
 

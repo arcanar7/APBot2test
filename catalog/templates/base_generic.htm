@@ -27,6 +27,7 @@
           <li><a href="{% url 'index' %}">Главная</a></li>
           <li><a href="{% url 'users' %}">Все пользователи</a></li>
           <li><a href="{% url 'events_descript' %}">Все события</a></li>
+          <li><a href="{% url 'gift_descript' %}">Все подарки</a></li>
           {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li>
