@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Все пользователи</title>
-</head>
-<body>
+{% extends "base_generic.htm" %}
+{% block content %}
 <h1>Все пользователи</h1>
-<ul>
-    {% for us in users %}
-        <li>{{ us.name}} {{us.phone}} {{us.id_user}} {{us.id_invite}} {{us.dt_birth}}</li>
-    {% endfor %}
-</ul>
-</body>
-</html>
+<table cellpadding="7" border="2" width="100%">
+    <tbody>
+        <tr align="center" bgcolor="silver">
+            <td> Имя </td>
+            <td> Телефон </td>
+            <td> id пользователя </td>
+            <td> id пригласившего </td>
+            <td> Дата рождения </td>
+        </tr>
+        {% for us in users %}
+            <tr align="center">
+                <td> {{ us.name}} </td>
+                <td> {{us.phone}} </td>
+                <td> {{us.id_user}} </td>
+                <td> {{us.id_invite}} </td>
+                <td> {{us.dt_birth}} </td>
+            </tr>
+        {% empty %}
+            <tr>Список пользователей пуст.</tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

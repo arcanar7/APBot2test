@@ -3,15 +3,13 @@
 {% block content %}
 <h1>Админ-панель</h1>
 
-  <p>Добро пожаловать в <em>Панель администратора управления ботом</em> желаем успешной работы</p>
-<h2>Dynamic content</h2>
+  <p>Добро пожаловать в <em><strong>Панель администратора управления ботом.</strong></em> Желаем успешной работы!</p>
 
-  <p>Что можно посмотреть в боте</p>
+  <p>Что можно посмотреть в боте:</p>
   <ul>
     <li><strong>Пользователи</strong> {{ num_users }}</li>
     <li><strong>Подарки событий</strong> {{ num_events_gift }}</li>
     <li><strong>События</strong> {{ num_events_descript }}</li>
       </ul>
-<p>Вы посещали эту страницу {{ num_visits }}{% if num_visits == 1 %} раз{% else %} раза{% endif %}.</p>
+<!--<p>Вы посещали эту страницу {{ num_visits }}{% if num_visits == 1 %} раз{% else %} раза{% endif %}.</p>-->
 {% endblock %}
-
