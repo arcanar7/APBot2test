@@ -22,10 +22,12 @@ def index(request):
 
 class UsersListView(generic.ListView):
     model = Users
+    paginate_by = 10
 
 
 class EventsDescriptListView(generic.ListView):
     model = EventsDescript
+    paginate_by = 10
 
 
 class EventsDescriptDetailView(generic.DetailView):
@@ -34,6 +36,7 @@ class EventsDescriptDetailView(generic.DetailView):
 
 class GiftDescriptListView(generic.ListView):
     model = GiftDescript
+    paginate_by = 5
 
 
 class GiftDescriptDetailView(generic.DetailView):
@@ -42,6 +45,7 @@ class GiftDescriptDetailView(generic.DetailView):
 
 class GiftOutsListView(generic.ListView):
     model = GiftOuts
+    paginate_by = 10
 
 
 class GiftOutsDetailView(generic.DetailView):

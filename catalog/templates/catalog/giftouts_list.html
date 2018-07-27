@@ -8,9 +8,9 @@
 
       {% for giftOuts in giftouts_list %}
       <li>
-        <a href="{{ giftOuts.get_absolute_url }}">{{ giftOuts.display_name }}</a>
+        <a href="{{ giftOuts.get_absolute_url }}">{{ giftOuts.display_phone }}
           {{giftOuts.display_gift}}
-          Статус: {{giftOuts.status}}
+          Статус: {{giftOuts.status}}</a>
       </li>
       {% endfor %}
 
