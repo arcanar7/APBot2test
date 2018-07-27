@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.urls import reverse
 
 
 class AuthGroup(models.Model):
@@ -124,6 +125,9 @@ class EventsDescript(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('events_descript-detail', args=[str(self.pk)])
 
     class Meta:
         verbose_name = 'Событие'

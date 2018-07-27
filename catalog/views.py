@@ -31,3 +31,8 @@ def detail(request):
 
 class EventsDescriptListView(generic.ListView):
     model = EventsDescript
+
+
+class EventsDescriptDetailView(generic.DetailView):
+    model = EventsDescript
+

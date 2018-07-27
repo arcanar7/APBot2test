@@ -1,0 +1,19 @@
+{% extends "base_generic.htm" %}
+
+{% block content %}
+    <h1>События</h1>
+
+    {% if eventsdescript_list %}
+    <ul>
+
+      {% for EventsDescript in eventsdescript_list %}
+      <li>
+        <a href="{{ eventsdescript.get_absolute_url }}">{{ EventsDescript.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Пусто</p>
+    {% endif %}       
+{% endblock %}
