@@ -189,6 +189,15 @@ class GiftOuts(models.Model):
         gift = EventsGift.objects.filter(id=self.id_event_gift).values("id_gift")[0]['id_gift']
         return GiftDescript.objects.filter(id=gift).values("name")[0]['name']
 
+    def display_name(self):
+        return Users.objects.filter(id_user=self.id_user).values("name")[0]['name']
+
+    def display_phone(self):
+        return Users.objects.filter(id_user=self.id_user).values("phone")[0]['phone']
+
+    def get_absolute_url(self):
+        return reverse('gift_outs-detail', args=[str(self.pk)])
+
     display_gift.short_description = 'Название подарка'
 
     class Meta:

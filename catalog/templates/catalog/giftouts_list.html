@@ -1,0 +1,21 @@
+{% extends "base_generic.htm" %}
+
+{% block content %}
+    <h1>Подарки пользователей</h1>
+
+    {% if giftouts_list %}
+    <ul>
+
+      {% for giftOuts in giftouts_list %}
+      <li>
+        <a href="{{ giftOuts.get_absolute_url }}">{{ giftOuts.display_name }}</a>
+          {{giftOuts.display_gift}}
+          Статус: {{giftOuts.status}}
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Пусто</p>
+    {% endif %}
+{% endblock %}

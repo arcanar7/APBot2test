@@ -1,0 +1,11 @@
+{% extends "base_generic.htm" %}
+
+{% block content %}
+  <h1>Название: {{ giftouts.display_gift }}</h1>
+
+<li><strong>Пользователь:</strong> {{ giftouts.display_name }}</li>
+<li><strong>Статус подарка:</strong> {{ giftouts.status }}</li>
+<li><strong>id пользователя:</strong> {{ giftouts.id_user }}</li>
+<li><strong>Номер телефона:</strong> {{ giftouts.display_phone }}</li>
+
+{% endblock %}
