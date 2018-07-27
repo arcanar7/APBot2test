@@ -26,7 +26,11 @@ def detail(request):
     # except Users.DoesNotExist:
     #     raise Http404("Question does not exist")
     users = get_list_or_404(Users)
-    return render(request, 'catalog/detail.html', {'users': users})
+    return render(request, 'catalog/users_list.html', {'users': users})
+
+
+class UsersListView(generic.ListView):
+    model = Users
 
 
 class EventsDescriptListView(generic.ListView):
