@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_list_or_404
+from django.http import Http404
 from .models import EventsDescript, EventsGift, Users
 from django.views import generic
 
@@ -23,8 +24,12 @@ def index(request):
 
 
 def detail(request):
-    user = get_list_or_404(Users)
-    return render(request, 'catalog/detail.html', {'user': user})
+    # try:
+    #     users = Users.objects.all()
+    # except Users.DoesNotExist:
+    #     raise Http404("Question does not exist")
+    users = get_list_or_404(Users)
+    return render(request, 'catalog/detail.html', {'users': users})
 
 
 class EventsDescriptListView(generic.ListView):

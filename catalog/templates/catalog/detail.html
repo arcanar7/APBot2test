@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1>Все пользователи</h1>
-{{ user }}
+<ul>
+    {% for us in users %}
+        <li>{{ us.name}} {{us.phone}} {{us.id_user}} {{us.id_invite}} {{us.dt_birth}}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

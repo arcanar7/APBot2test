@@ -199,8 +199,8 @@ class Users(models.Model):
     phone = models.CharField(max_length=30, blank=True, null=True, verbose_name="Телефон")
     dt_birth = models.DateTimeField(blank=True, null=True, verbose_name="Дата рождения")
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
     class Meta:
         verbose_name = 'Пользователь'
