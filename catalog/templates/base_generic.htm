@@ -25,7 +25,7 @@
       {% block sidebar %}
       <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Главная</a></li>
-          <li><a href="">Все пользователи</a></li>
+          <li><a href="{% url 'users' %}">Все пользователи</a></li>
           <li><a href="{% url 'events_descript' %}">Все подарки событий</a></li>
           <li><a href=””>Все события</a></li>
           {% if user.is_authenticated %}

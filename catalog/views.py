@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from .models import EventsDescript, EventsGift, Users
 from django.views import generic
 
@@ -20,6 +20,11 @@ def index(request):
         context={'num_events_descript': num_events_descript, 'num_users': num_users, 'num_events_gift': num_events_gift,
                  'num_visits': num_visits},
     )
+
+
+def detail(request):
+    user = get_list_or_404(Users)
+    return render(request, 'catalog/detail.html', {'user': user})
 
 
 class EventsDescriptListView(generic.ListView):
