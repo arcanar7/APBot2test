@@ -12,7 +12,7 @@ nav ul {
 
 nav li {
 	list-style-position: inside;
-	font: 14px 'Oswald', sans-serif;
+	font: 14px 'Fredoka One', cursive;
 	padding: 10px;
 }
 
@@ -50,7 +50,7 @@ button {
 	background-color: #29c5e6;
 	border: none;
 	height: 32px;
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Fredoka One', cursive;
 }
 p {
 	margin: 20px 0;
@@ -84,7 +84,7 @@ form[name="search"] {
 }
 aside > h2 {
 	background: #29c5e6;
-	font: 14px 'Oswald', sans-serif;
+	font: 14px 'Fredoka One', cursive;
 	color: #fff;
 	padding: 10px;
 	margin: 30px 0 0 0;
@@ -116,7 +116,7 @@ section {
 figure {
 	display: inline-block;
 	margin: 0;
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Fredoka One', cursive;
 	font-weight: 300;
 }
 
@@ -142,7 +142,7 @@ section > figure + figure {
 }
 section > h2 {
 	background: #29c5e6;
-	font: 30px 'Oswald', sans-serif;
+	font: 30px 'Fredoka One', cursive;
 	font-weight: 300;
 	color: #fff;
 	padding: 0 10px;
