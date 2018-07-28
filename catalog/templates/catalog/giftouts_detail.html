@@ -49,7 +49,7 @@
 <li><strong>id пользователя:</strong> {{ giftouts.id_user }}</li>
 <li><strong>Номер телефона:</strong> {{ giftouts.display_phone }}</li>
 {% if giftouts.status == "Ожидает выдачи" %}
-  <button class="button22" onclick="{{giftouts.change_status}}">Выдать подарок</button>
+  <form onclick="location.reload()"><button class="button22" onclick="{{giftouts.change_status}}">Выдать подарок</button></form>
 {% endif %}
 
 {% endblock %}
