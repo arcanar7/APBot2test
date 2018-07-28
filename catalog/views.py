@@ -22,21 +22,22 @@ def index(request):
 
 class UsersListView(generic.ListView):
     model = Users
-    paginate_by = 10
+    paginate_by = 25
 
 
 class EventsDescriptListView(generic.ListView):
     model = EventsDescript
-    paginate_by = 10
+    paginate_by = 25
 
 
 class EventsDescriptDetailView(generic.DetailView):
     model = EventsDescript
+    template_name = "catalog/add_event.html"
 
 
 class GiftDescriptListView(generic.ListView):
     model = GiftDescript
-    paginate_by = 5
+    paginate_by = 25
 
 
 class GiftDescriptDetailView(generic.DetailView):
@@ -45,7 +46,7 @@ class GiftDescriptDetailView(generic.DetailView):
 
 class GiftOutsListView(generic.ListView):
     model = GiftOuts
-    paginate_by = 10
+    paginate_by = 25
 
 
 class GiftOutsDetailView(generic.DetailView):
