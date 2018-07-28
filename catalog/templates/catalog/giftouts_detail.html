@@ -3,7 +3,7 @@
 {% block content %}
 <style>
 
-a.button22 {
+.button22 {
   margin-top:25px;
   position: relative;
   display: inline-block;
@@ -24,15 +24,15 @@ a.button22 {
    0 -1px rgba(10,21,28,.9) inset,
    0 1px rgba(255,255,255,.5) inset;
 }
-a.button22:hover {
+.button22:hover {
   background: linear-gradient(#d2dfea, #71828c);
 }
-a.button22:active {
+.button22:active {
   line-height: 2.6em;
   background: linear-gradient(#bac6cf, #c5d3de 20%, #71828c);
   box-shadow: 0 -1px rgba(255,255,255,.4) inset;
 }
-a.button22:before {
+.button22:before {
   content: "";
   position: absolute;
   top: -10px; right: -10px; bottom: -10px; left: -10px;
@@ -48,5 +48,8 @@ a.button22:before {
 <li><strong>Статус подарка:</strong> {{ giftouts.status }}</li>
 <li><strong>id пользователя:</strong> {{ giftouts.id_user }}</li>
 <li><strong>Номер телефона:</strong> {{ giftouts.display_phone }}</li>
-<a href="#" class="button22">Выдать подарок</a>
+{% if giftouts.status == "Ожидает выдачи" %}
+  <button class="button22" onclick="{{giftouts.change_status}}">Выдать подарок</button>
+{% endif %}
+
 {% endblock %}

@@ -198,6 +198,10 @@ class GiftOuts(models.Model):
     def get_absolute_url(self):
         return reverse('gift_outs-detail', args=[str(self.pk)])
 
+    def change_status(self):
+        self.status = "Выдан"
+        self.save()
+
     display_gift.short_description = 'Название подарка'
 
     class Meta:
