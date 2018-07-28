@@ -3,14 +3,24 @@
 <html lang="ru">
  <meta charset="utf-8">
 <head>
-  
+
   {% block title %}<title>Админ-панель</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="add_event/bootstrap.css" rel="stylesheet">
+    <link href="add_event/form-validation.css" rel="stylesheet">
   <!-- Добавление дополнительного статического CSS файла -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -28,7 +38,7 @@
             {% block sidebar %}
             <ul class="aside-menu">
 		        <li><a href="{% url 'index' %}">Главная</a></li>
-		        <li class="active"><a href="{% url 'users' %}">Все пользователи</a></li>
+		        <li><a href="{% url 'users' %}">Все пользователи</a></li>
 		        <li><a href="{% url 'events_descript' %}">Все события</a></li>
 		        <li><a href="{% url 'gift_descript' %}">Все подарки</a></li>
 		        <li><a href="{% url 'gift_outs' %}">Подарки пользователей</a></li>

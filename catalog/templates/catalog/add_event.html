@@ -1,36 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-
-    <title>Карточка событий</title>
-
+{% extends "base_generic.htm" %}
+{% block content %}
+<h1>Карточка событий</h1>
     <!-- Bootstrap core CSS -->
-    <link href="add_event/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="add_event/form-validation.css" rel="stylesheet">
-  </head>
-
-  <body class="bg-light">
-
-    <div class="container">
-      <div class="py-5 text-center">
-       
-        <h2>Добро пожаловать</h2>
-        <p class="lead">Изменить данные о проводимых событиях</p>
-      </div>
-
-      <div class="row">
-       
-        <div class="col-md-8 order-md-1" style="margin: auto;">
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Добро пожаловать</h2>
+      <p class="lead">Изменить данные о проводимых событиях</p>
+  </div>
+  <div class="row">
+      <div class="col-md-8 order-md-1" style="margin: auto;">
           <h4 class="mb-3">Карточка изменения событий (акций)</h4>
-          <form class="needs-validation" novalidate="">
-            <div class="row">
+              <form class="needs-validation" novalidate="">
+          <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="name">Название события</label>
                 <input class="form-control" id="name" placeholder="" required="" type="text">
@@ -43,13 +24,9 @@
                 <input class="form-control" id="dName" placeholder="" required="" type="text">
                 <div class="invalid-feedback">
                   Введите описание события.
-                </div>
               </div>
-            </div>
-
-           
-
-            
+          </div>
+</div>
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить</button>
 			<button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить и добавить новое</button>
@@ -58,11 +35,7 @@
         </div>
       </div>
 
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">© Бот</p>
-        
-      </footer>
-    </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -96,4 +69,4 @@
     </script>
   
 
-</body></html>
+{% endblock %}
