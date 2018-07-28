@@ -5,6 +5,7 @@
 <head>
 
   {% block title %}<title>Админ-панель</title>{% endblock %}
+      {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -15,15 +16,13 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="catalog/add_event/bootstrap.css" rel="stylesheet">
-    <link href="catalog/add_event/form-validation.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/form-validation.css' %}" rel="stylesheet">
   <!-- Добавление дополнительного статического CSS файла -->
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 </head>
 
