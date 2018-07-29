@@ -40,7 +40,7 @@
             <input type="text"/>
             </td>
         </tr>
-        <tr align="center" bgcolor="silver">
+        <tr align="center" bgcolor="silver" class="table-data">
             <td> Имя </td>
             <td> Телефон </td>
             <td> id пользователя </td>
@@ -48,7 +48,7 @@
             <td> Дата рождения </td>
         </tr>
         {% for us in users_list %}
-            <tr align="center">
+            <tr align="center" class="table-data">
                 <td> {{ us.name}} </td>
                 <td> {{us.phone}} </td>
                 <td> {{us.id_user}} </td>
