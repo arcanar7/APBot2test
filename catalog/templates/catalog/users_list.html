@@ -1,7 +1,8 @@
 {% extends "base_generic.htm" %}
 {% block content %}
 <h1>Все пользователи</h1>
-<table cellpadding="7" border="2" width="100%">
+<div class="table-responsive">
+<table cellpadding="7" border="2" width="100%" class="table table-hover table-condensed">
     <tbody>
         <tr align="center" bgcolor="silver">
             <td> Имя </td>
@@ -23,4 +24,5 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% endblock %}
