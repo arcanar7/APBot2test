@@ -30,9 +30,10 @@ class EventsDescriptListView(generic.ListView):
     paginate_by = 25
 
 
-class EventsDescriptDetailView(generic.DetailView):
+class EventsDescriptDetailView(generic.UpdateView):
     model = EventsDescript
     template_name = "catalog/change_event.html"
+    fields = ['name', 'descript']
 
 
 class GiftDescriptListView(generic.ListView):
