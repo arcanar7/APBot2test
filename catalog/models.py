@@ -129,6 +129,11 @@ class EventsDescript(models.Model):
     def get_absolute_url(self):
         return reverse('events_descript-detail', args=[str(self.pk)])
 
+    def change_event(self, new_name, new_descript):
+        self.name = new_name
+        self.descript = new_descript
+        self.save()
+
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'События'
