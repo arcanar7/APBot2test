@@ -1,15 +1,11 @@
 {% extends "base_generic.htm" %}
 {% load static %}
 {% block content %}
-{% for user in users %}
-    {{ bot.send_message(user.id_user, "test message") }}
-{% endfor %}
+
 <h1>Отправить сообщение пользователям</h1>
 <textarea rows="10" cols="45" name="message_bot" style="height: 208px; resize: none;">Введите текст сообщения</textarea>
 <button class="btn btn-primary btn-lg btn-block" style="width: 25%; margin-top: 15px;"
-onclick="{% for user in users %}
-            {{ user }}
-         {% endfor %}"
+onclick="{{ send_message2 }}"
 >Отправить сообщение</button>
 {% endblock %}
 

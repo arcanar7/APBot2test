@@ -33,6 +33,14 @@ def send_message(request):
     )
 
 
+def send_message2():
+    users = Users.objects.all()
+    bot = TeleBot(token)
+    for user in users:
+        print(user)
+        bot.send_message(user.id_user, "test message")
+
+
 class UsersListView(generic.ListView):
     model = Users
     paginate_by = 25
