@@ -1,9 +1,45 @@
 {% extends "base_generic.htm" %}
 {% block content %}
+<style>
+    #filter-table{
+        width: 100%;
+    }
+    #filter-table th{
+        background-color: #dadada;
+    }
+    #filter-table td, #filter-table th{
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
 <h1>Все пользователи</h1>
 <div class="table-responsive">
-<table cellpadding="7" border="2" width="100%" class="table table-hover table-condensed">
+<table cellpadding="7" border="2" width="100%" class="table table-hover table-condensed" id="filter-table">
     <tbody>
+        <tr>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th>id пользователя</th>
+            <th>id пригласившего</th>
+            <th>Дата рождения</th>
+        </tr>
+        <tr class='table-filters'>
+            <td>
+            <input type="text"/>
+            </td>
+            <td>
+            <input type="text"/>
+            </td>
+            <td>
+            <input type="text"/>
+            </td>
+            <td>
+            <input type="text"/>
+            </td>
+            <td>
+            <input type="text"/>
+            </td>
+        </tr>
         <tr align="center" bgcolor="silver">
             <td> Имя </td>
             <td> Телефон </td>
@@ -25,4 +61,31 @@
     </tbody>
 </table>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$('.table-filters input').on('input', function () {
+    filterTable($(this).parents('table'));
+});
+
+function filterTable($table) {
+    var $filters = $table.find('.table-filters td');
+    var $rows = $table.find('.table-data');
+    $rows.each(function (rowIndex) {
+        var valid = true;
+        $(this).find('td').each(function (colIndex) {
+            if ($filters.eq(colIndex).find('input').val()) {
+                if ($(this).html().toLowerCase().indexOf(
+                $filters.eq(colIndex).find('input').val().toLowerCase()) == -1) {
+                    valid = valid && false;
+                }
+            }
+        });
+        if (valid === true) {
+            $(this).css('display', '');
+        } else {
+            $(this).css('display', 'none');
+        }
+    });
+}
+</script>
 {% endblock %}
