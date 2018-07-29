@@ -1,8 +1,6 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
-from django.http import Http404
+from django.shortcuts import render
 from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
 from django.views import generic
-from .forms import EventForm
 
 
 def index(request):
@@ -21,21 +19,6 @@ def index(request):
     )
 
 
-def change_event(request, pk):
-    event = get_object_or_404(EventsDescript, pk=pk)
-    if request.method == "POST":
-        form = EventForm(request.POST, instance=event)
-        print(form)
-        print(form.name)
-        if form.is_valid():
-            event = form.save(commit=False)
-            event.save()
-            return redirect('events_descript-detail', pk=event.pk)
-    else:
-        form = EventForm(instance=event)
-    return render(request, 'catalog/change_event.html', {'form': form})
-
-
 class UsersListView(generic.ListView):
     model = Users
     paginate_by = 25
@@ -50,6 +33,11 @@ class EventsDescriptDetailView(generic.UpdateView):
     model = EventsDescript
     template_name = "catalog/change_event.html"
     fields = ['name', 'descript']
+
+
+class EventsDescript_new(generic.CreateView):
+    model = EventsDescript
+    template_name = "catalog/add_event.html"
 
 
 class GiftDescriptListView(generic.ListView):
