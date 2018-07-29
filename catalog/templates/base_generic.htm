@@ -41,6 +41,7 @@
                     <li><a href="{% url 'events_descript' %}">Все события</a></li>
                     <li><a href="{% url 'gift_descript' %}">Все подарки</a></li>
                     <li><a href="{% url 'gift_outs' %}">Подарки пользователей</a></li>
+                    <li><a href="">Отправить сообщение</a></li>
                     {% if user.is_authenticated %}
                     <li>User: {{ user.get_username }}</li>
                     <li><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li>

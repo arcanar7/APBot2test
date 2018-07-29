@@ -1,0 +1,35 @@
+{% extends "base_generic.htm" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Добро пожаловать</h2>
+      <p class="lead">Добавить новый подарок</p>
+  </div>
+  <div class="row">
+      <div class="col-md-8 order-md-1" style="margin: auto;">
+          <h4 class="mb-3">Карточка добавления нового подарка</h4>
+              <form class="needs-validation" novalidate="">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name_gift">Название подарка</label>
+                            <input class="form-control" id="name_gift" placeholder="" required="" type="text">
+                                    <div class="invalid-feedback">
+                                        Введите название события.
+                                    </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="gift">Введите количество подарков</label>
+                            <input class="form-control" id="gift" placeholder="" required="" type="text">
+                                    <div class="invalid-feedback">
+                                        Введите описание события.
+                                    </div>
+                        </div>
+                    </div>
+                <hr class="mb-4">
+                <button class="button22" type="submit">Сохранить</button>
+              </form>
+      </div>
+  </div>
+</div>
+{% endblock %}
