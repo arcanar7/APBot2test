@@ -32,7 +32,7 @@ class EventsDescriptListView(generic.ListView):
 
 class EventsDescriptDetailView(generic.DetailView):
     model = EventsDescript
-    template_name = "catalog/add_event.html"
+    template_name = "catalog/change_event.html"
 
 
 class GiftDescriptListView(generic.ListView):
