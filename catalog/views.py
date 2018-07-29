@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
 from django.http import Http404
 from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
 from django.views import generic
+from .forms import EventForm
 
 
 def index(request):
@@ -18,6 +19,19 @@ def index(request):
         context={'num_events_descript': num_events_descript, 'num_users': num_users,
                  'num_events_gift': num_events_gift},
     )
+
+
+def change_event(request, pk):
+    event = get_object_or_404(EventsDescript, pk=pk)
+    if request.method == "POST":
+        form = EventForm(request.POST, instance=event)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.save()
+            return redirect('events_descript-detail', pk=event.pk)
+    else:
+        form = EventForm(instance=event)
+    return render(request, 'catalog/change_event.html', {'form': form})
 
 
 class UsersListView(generic.ListView):

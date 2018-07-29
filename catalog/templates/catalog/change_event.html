@@ -11,18 +11,19 @@
   <div class="row">
       <div class="col-md-8 order-md-1" style="margin: auto;">
           <h4 class="mb-3">Карточка изменения событий (акций)</h4>
-              <form class="needs-validation" novalidate="">
+              <form method="post" class="needs-validation" novalidate="">
+                  {% csrf_token %}
           <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="name">Название события</label>
-                <input class="form-control" id="name" placeholder="" required="" type="text" value="{{eventsdescript.name}}">
+                <label for="{{form.name}}">Название события</label>
+                <input class="form-control" id="{{form.name}}" placeholder="" required="" type="text">
                 <div class="invalid-feedback">
                   Введите название события.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="dName">Описание события</label>
-                <input class="form-control" id="dName" placeholder="" required="" type="text" value="{{eventsdescript.descript}}">
+                <input class="form-control" id="dName" placeholder="" required="" type="text">
                 <div class="invalid-feedback">
                   Введите описание события.
                 </div>
@@ -30,7 +31,7 @@
           </div>
             <hr class="mb-4">
              <form onclick="location.reload()">
-                 <button class="btn btn-primary btn-lg btn-block">Сохранить</button>
+                 <button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить</button>
              </form>
                </form>
       </div>
@@ -50,7 +51,6 @@
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
         'use strict';
-
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
