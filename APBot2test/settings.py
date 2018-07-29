@@ -16,6 +16,7 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read("config.ini")
+token = config["DEFAULT"]["token"]
 db_file = config["Bot Specific"]["db_file"]
 host = config["Bot Specific"]["host"]
 user = config["Bot Specific"]["user"]

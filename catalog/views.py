@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
 from django.views import generic
+from telebot import TeleBot
+from .config import token
 
 
 def index(request):
@@ -16,6 +18,17 @@ def index(request):
         'index.html',
         context={'num_events_descript': num_events_descript, 'num_users': num_users,
                  'num_events_gift': num_events_gift},
+    )
+
+
+def send_message(request):
+    users = Users.objects.all()
+    bot = TeleBot(token)
+
+    return render(
+        request,
+        'catalog/send_message.html',
+        context={'users': users, 'bot': bot},
     )
 
 
