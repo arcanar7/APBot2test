@@ -38,6 +38,7 @@ class EventsDescriptDetailView(generic.UpdateView):
 class EventsDescript_new(generic.CreateView):
     model = EventsDescript
     template_name = "catalog/add_event.html"
+    fields = ['name', 'descript']
 
 
 class GiftDescriptListView(generic.ListView):
