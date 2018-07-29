@@ -50,6 +50,12 @@ class GiftDescriptDetailView(generic.DetailView):
     model = GiftDescript
 
 
+class GiftDescript_new(generic.CreateView):
+    model = GiftDescript
+    template_name = "catalog/add_gift.html"
+    fields = ['name', 'cnt']
+
+
 class GiftOutsListView(generic.ListView):
     model = GiftOuts
     paginate_by = 25
