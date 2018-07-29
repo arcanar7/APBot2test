@@ -24,6 +24,7 @@ def index(request):
 def send_message(request):
     users = Users.objects.all()
     bot = TeleBot(token)
+    print(users)
 
     return render(
         request,
