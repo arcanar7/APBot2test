@@ -25,6 +25,8 @@ def change_event(request, pk):
     event = get_object_or_404(EventsDescript, pk=pk)
     if request.method == "POST":
         form = EventForm(request.POST, instance=event)
+        print(form)
+        print(form.name)
         if form.is_valid():
             event = form.save(commit=False)
             event.save()

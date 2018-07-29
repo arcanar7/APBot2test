@@ -6,4 +6,4 @@ class EventForm(forms.ModelForm):
 
     class Meta:
         model = EventsDescript
-        fields = ('name', 'descript',)
+        exclude = [""]
