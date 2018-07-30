@@ -89,5 +89,7 @@ class GiftOutsListView(generic.ListView):
     paginate_by = 25
 
 
-class GiftOutsDetailView(generic.DetailView):
+class GiftOutsDetailView(generic.UpdateView):
     model = GiftOuts
+    template_name = "catalog/giftouts_detail.html"
+    fields = ['status']
