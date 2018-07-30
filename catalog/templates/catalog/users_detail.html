@@ -1,0 +1,15 @@
+{% extends "base_generic.htm" %}
+
+{% block content %}
+  <h1>Имя: {{ users.name }}</h1>
+
+<li><strong>Номер телефона:</strong> {{ users.phone }}</li>
+<li><strong>id пользователя:</strong> {{ users.id_user }}</li>
+<li><strong>id пригласившего:</strong> {{ users.id_invite }}</li>
+<li><strong>Дата рождения:</strong> {{ users.dt_birth }}</li>
+<li><strong>Дата регистрации:</strong> {{ users.dt_add }}</li>
+
+<li><strong>Список подарков:</strong></li>
+{{ users.get_gifts }}
+
+{% endblock %}

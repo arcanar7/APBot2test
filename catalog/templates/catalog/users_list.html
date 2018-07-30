@@ -8,7 +8,7 @@
         background-color: #dadada;
     }
     #filter-table td, #filter-table th{
-        padding: 5px;
+        padding: 3px;
         border-bottom: 1px solid #ccc;
     }
 </style>
@@ -16,12 +16,13 @@
 <div>
 <table cellpadding="7" border="2" width="100%" class="table table-hover table-condensed" id="filter-table">
     <tbody>
-        <tr>
+        <tr align="center">
             <th>Имя</th>
             <th>Телефон</th>
             <th>id пользователя</th>
             <th>id пригласившего</th>
             <th>Дата рождения</th>
+            <th>Дата регистрации</th>
         </tr>
         <tr class='table-filters'>
             <td>
@@ -39,21 +40,18 @@
             <td>
             <input type="text"/>
             </td>
-        </tr>
-        <tr align="center" bgcolor="silver" class="table-data">
-            <td> Имя </td>
-            <td> Телефон </td>
-            <td> id пользователя </td>
-            <td> id пригласившего </td>
-            <td> Дата рождения </td>
+            <td>
+            <input type="text"/>
+            </td>
         </tr>
         {% for us in users_list %}
             <tr align="center" class="table-data">
                 <td> {{ us.name}} </td>
-                <td> {{us.phone}} </td>
+                <td><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
                 <td> {{us.id_user}} </td>
                 <td> {{us.id_invite}} </td>
-                <td> {{us.dt_birth}} </td>
+                <td> {{us.dt_birth|date:"d.m.Y"}} </td>
+                <td> {{us.dt_add|date:"d.m.Y"}} </td>
             </tr>
         {% empty %}
             <tr>Список пользователей пуст.</tr>

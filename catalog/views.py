@@ -46,6 +46,10 @@ class UsersListView(generic.ListView):
     paginate_by = 25
 
 
+class UsersDetailView(generic.DetailView):
+    model = Users
+
+
 class EventsDescriptListView(generic.ListView):
     model = EventsDescript
     paginate_by = 25

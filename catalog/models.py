@@ -222,6 +222,14 @@ class Users(models.Model):
     # def __str__(self):
     #     return self.name
 
+    def get_gifts(self):
+        gift = list(GiftOuts.objects.filter(id_user=self.id_user).values("id_user", "status", "id_event_gift"))
+        print(gift)
+        return gift
+
+    def get_absolute_url(self):
+        return reverse('users-detail', args=[str(self.pk)])
+
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'

@@ -6,6 +6,7 @@ from django.urls import path
 urlpatterns = [
     path('', views.index, name='index'),
     url(r'^users/$', views.UsersListView.as_view(), name='users'),
+    url(r'^users/(?P<pk>\d+)$', views.UsersDetailView.as_view(), name='users-detail'),
     url(r'^events_descript/$', views.EventsDescriptListView.as_view(), name='events_descript'),
     url(r'^events_descript/(?P<pk>\d+)$', views.EventsDescriptDetailView.as_view(), name='events_descript-detail'),
     url(r'^events_descript/new/$', views.EventsDescript_new.as_view(), name='events_descript-new'),
