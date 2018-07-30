@@ -10,6 +10,14 @@
 <li><strong>Дата регистрации:</strong> {{ users.dt_add }}</li>
 
 <li><strong>Список подарков:</strong></li>
-{{ users.get_gifts }}
+<ol>
+  {% for user in users.get_gifts %}
+    <li>
+      <a href="{{path}}/catalog/gift_outs/{{user.id}}">
+        {{user.gift_name}} (Событие: {{user.event_name}}) Статус: {{user.status}}
+      </a>
+    </li>
+  {% endfor %}
+</ol>
 
 {% endblock %}

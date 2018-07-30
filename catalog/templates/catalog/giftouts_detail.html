@@ -45,11 +45,14 @@
   <h1>Название подарка: {{ giftouts.display_gift }}</h1>
 
 <li><strong>Пользователь:</strong> {{ giftouts.display_name }}</li>
-<li><strong>Статус подарка:</strong> {{ giftouts.status }}</li>
+<li><strong>Статус подарка: </strong><select name="form.status.name">
+  <option value="Ожидает выдачи">Ожидает выдачи</option>
+  <option value="Выдан">Выдан</option>
+</select></li>
 <li><strong>id пользователя:</strong> {{ giftouts.id_user }}</li>
 <li><strong>Номер телефона:</strong> {{ giftouts.display_phone }}</li>
 {% if giftouts.status == "Ожидает выдачи" %}
-  <form onclick="location.reload()"><button class="button22" onclick="{{giftouts.change_status}}">Выдать подарок</button></form>
+  <button class="btn btn-primary btn-lg btn-block" type="submit">Выдать подарок</button></form>
 {% endif %}
 
 {% endblock %}

@@ -223,9 +223,16 @@ class Users(models.Model):
     #     return self.name
 
     def get_gifts(self):
-        gift = list(GiftOuts.objects.filter(id_user=self.id_user).values("id_user", "status", "id_event_gift"))
-        print(gift)
-        return gift
+        gift = list(GiftOuts.objects.filter(id_user=self.id_user).values("id", "id_user", "status", "id_event_gift"))
+        gift_out = []
+        for item in gift:
+            ids = EventsGift.objects.filter(id=item['id_event_gift']).values("id_gift", "id_event")[0]
+            event_name = EventsDescript.objects.filter(id=ids['id_event']).values("name")[0]['name']
+            gift_name = GiftDescript.objects.filter(id=ids['id_gift']).values("name")[0]['name']
+            item['event_name'] = event_name
+            item['gift_name'] = gift_name
+            gift_out.append(item)
+        return gift_out
 
     def get_absolute_url(self):
         return reverse('users-detail', args=[str(self.pk)])
