@@ -8,7 +8,7 @@ from .config import token
 def index(request):
     num_events_descript = EventsDescript.objects.all().count()
     num_users = Users.objects.all().count()
-    num_events_gift = EventsGift.objects.all().count()
+    num_gifts = GiftDescript.objects.all().count()
 
     # Отрисовка HTML-шаблона index.html с данными внутри
     # переменной контекста context
@@ -17,7 +17,7 @@ def index(request):
         request,
         'index.html',
         context={'num_events_descript': num_events_descript, 'num_users': num_users,
-                 'num_events_gift': num_events_gift},
+                 'num_gifts': num_gifts},
     )
 
 
@@ -68,8 +68,10 @@ class GiftDescriptListView(generic.ListView):
     paginate_by = 25
 
 
-class GiftDescriptDetailView(generic.DetailView):
+class GiftDescriptDetailView(generic.UpdateView):
     model = GiftDescript
+    template_name = "catalog/change_gift.html"
+    fields = ['name', 'cnt']
 
 
 class GiftDescript_new(generic.CreateView):

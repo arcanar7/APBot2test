@@ -1,38 +1,40 @@
 {% extends "base_generic.htm" %}
 {% load static %}
 {% block content %}
-<h1>Карточка событий</h1>
+<h1>Карточка подарка</h1>
     <!-- Bootstrap core CSS -->
 <div class="container">
   <div class="py-5 text-center">
     <h2>{{form.name.value}}</h2>
-      <p class="lead">Изменить данные о проводимых событиях</p>
+      <p class="lead">Изменить данные о подарке</p>
   </div>
   <div class="row">
       <div class="col-md-8 order-md-1" style="margin: auto;">
-          <h4 class="mb-3">Карточка изменения событий (акций)</h4>
+          <h4 class="mb-3">Карточка изменения подарка</h4>
               <form action="" method="post" class="needs-validation" novalidate="">
                   {% csrf_token %}
           <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="name">Название события</label>
+                <label for="name">Название подарка</label>
                 <input class="form-control" placeholder="" required="" type="text" id="name"
                        name="{{form.name.name}}" value="{{form.name.value}}">
                 <div class="invalid-feedback">
-                  Введите название события.
+                  Введите название подарка.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="dName">Описание события</label>
-                <input class="form-control" id="dName" placeholder="" required="" type="text"
-                       name="{{form.descript.name}}" value="{{form.descript.value}}">
+                <label for="dName">Количество</label>
+                <input class="form-control" id="dName" placeholder="" required="" type="number"
+                       name="{{form.cnt.name}}" value="{{form.cnt.value}}" pattern="[0-9]{3}" style="height: 30px;">
                 <div class="invalid-feedback">
-                  Введите описание события.
+                  Введите количество.
                 </div>
               </div>
           </div>
             <hr class="mb-4">
+             <form onclick="location.reload()">
                  <button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить</button>
+             </form>
                </form>
       </div>
   </div>
@@ -68,6 +70,6 @@
         }, false);
       })();
     </script>
-  
+
 
 {% endblock %}
