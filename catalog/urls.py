@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^gift_descript/new/$', views.GiftDescript_new.as_view(), name='gift_descript-new'),
     url(r'^gift_outs/$', views.GiftOutsListView.as_view(), name='gift_outs'),
     url(r'^gift_outs/(?P<pk>\d+)$', views.GiftOutsDetailView.as_view(), name='gift_outs-detail'),
+    url(r'^add_eventsgift/$', views.EventsGiftDetailView.as_view(), name='add_eventsgift'),
     url(r'^send_message/$', views.send_message, name='send_message'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

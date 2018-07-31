@@ -1,0 +1,17 @@
+{% extends "base_generic.htm" %}
+{% block content %}
+<h1>Добавить подарок событию</h1>
+<form action="" method="post" class="needs-validation" novalidate="">
+  {% csrf_token %}
+  {% for eventgift in eventsgift_list %}
+    {{ eventgift.all_events }}
+  {% endfor %}
+  <ul>
+    <li><strong>Выберите событие: </strong><select name="{{form.id_event.name}}">
+        <option value="Выдан">Выдан</option>
+    </select>
+    </li>
+  </ul>
+  <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 150px; margin-left: 50px;">Добавить</button>
+</form>
+{% endblock %}

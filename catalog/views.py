@@ -93,3 +93,9 @@ class GiftOutsDetailView(generic.UpdateView):
     model = GiftOuts
     template_name = "catalog/giftouts_detail.html"
     fields = ['status']
+
+
+class EventsGiftDetailView(generic.CreateView):
+    model = EventsGift
+    fields = ['id_event', 'id_gift']
+    template_name = "catalog/add_eventsgift.html"
