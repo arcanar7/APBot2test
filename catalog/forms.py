@@ -7,3 +7,7 @@ class EventsGiftForm(forms.ModelForm):
     class Meta:
         model = EventsGift
         fields = ('id_event', 'id_gift',)
+
+
+class SendMSG(forms.ModelForm):
+    msg = forms.CharField(label='Message', max_length=500)

@@ -6,7 +6,17 @@ from .config import token
 from .forms import EventsGiftForm
 
 
+def my_view(request):
+    print("blablabla:")
+    print(request.user.is_authenticated)
+    if not request.user.is_authenticated:
+        print("Hello")
+        return redirect('http://yandex.ru/')
+        # redirect('%s/catalog/accounts/login/?next=/catalog/' % request.path)
+
+
 def index(request):
+    my_view(request)
     num_events_descript = EventsDescript.objects.all().count()
     num_users = Users.objects.all().count()
     num_gifts = GiftDescript.objects.all().count()
@@ -19,18 +29,6 @@ def index(request):
         'index.html',
         context={'num_events_descript': num_events_descript, 'num_users': num_users,
                  'num_gifts': num_gifts},
-    )
-
-
-def send_message(request):
-    users = Users.objects.all()
-    bot = TeleBot(token)
-    print(users)
-
-    return render(
-        request,
-        'catalog/send_message.html',
-        context={'users': users, 'bot': bot},
     )
 
 
@@ -112,8 +110,6 @@ def add_eventsgift(request):
         form = EventsGiftForm(request.POST)
         if form.is_valid():
             eventsgift = form.save(commit=False)
-            print('request>>>> ' + str(request))
-            print('request.POST>>>> ' + str(request.POST))
             eventsgift.id_event = request.POST['id_event']
             eventsgift.id_gift = request.POST['id_gift']
             eventsgift.save()
@@ -125,4 +121,18 @@ def add_eventsgift(request):
         request,
         'catalog/add_eventsgift.html',
         context={'events': events, 'gifts': gifts, 'form': form},
+    )
+
+
+def send_message(request):
+    users = Users.objects.all()
+    bot = TeleBot(token)
+    print(users)
+
+
+
+    return render(
+        request,
+        'catalog/send_message.html',
+        context={'users': users, 'bot': bot},
     )
