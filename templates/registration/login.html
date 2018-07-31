@@ -22,18 +22,18 @@
   <td>{{ form.username.label_tag }}</td>
   <td>{{ form.username }}</td>
 </div>
-<div>
+<div style="margin-left: 77px;">
   <td>{{ form.password.label_tag }}</td>
   <td>{{ form.password }}</td>
 </div>
 
 <div>
-  <input type="submit" value="login" />
+  <button type="submit" class="btn btn-info" style="font-size: 12px;width: 70px;margin-left: 225px;margin-top: 15px;">Логин</button>
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+<p style="margin-left: 195px;"><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
 
 {% endblock %}
