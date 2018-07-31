@@ -99,3 +99,6 @@ class EventsGiftDetailView(generic.CreateView):
     model = EventsGift
     fields = ['id_event', 'id_gift']
     template_name = "catalog/add_eventsgift.html"
+
+    def all_events(self):
+        return EventsDescript.objects.all()

@@ -3,9 +3,21 @@
 <h1>Добавить подарок событию</h1>
 <form action="" method="post" class="needs-validation" novalidate="">
   {% csrf_token %}
-  {% for eventgift in eventsgift_list %}
-    {{ eventgift.all_events }}
-  {% endfor %}
+  {{ EventsGiftDetailView_form }}
+  {{ eventsgiftdetailview_form }}
+  {{ EventsGiftDetail_form }}
+  {{ eventsgiftdetail_form }}
+  {{ EventsGift_form }}
+  {{ eventsgift_form }}
+  {{ EventsGiftDetailView_form.all_events }}
+  {{ eventsgiftdetailview_form.all_events }}
+  {{ eventsgiftdetail_form.all_events }}
+  {{ EventsGift_form.all_events }}
+  {{ eventsgift_form.all_events }}
+  {{ add_eventsgift_form.all_events }}
+  {{ form.all_events }}
+  {{ form.EventsGift_create.all_events }}
+  {{ form.eventsgift_create.all_events }}
   <ul>
     <li><strong>Выберите событие: </strong><select name="{{form.id_event.name}}">
         <option value="Выдан">Выдан</option>
