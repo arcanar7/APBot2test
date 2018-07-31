@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
 from django.views import generic
 from telebot import TeleBot
 from .config import token
+from .forms import EventsGiftForm
 
 
 def index(request):
@@ -107,10 +108,21 @@ class EventsGiftDetailView(generic.CreateView):
 def add_eventsgift(request):
     events = EventsDescript.objects.all()
     gifts = GiftDescript.objects.all()
-    eventsgift = EventsGift
+    if request.method == "POST":
+        form = EventsGiftForm(request.POST)
+        if form.is_valid():
+            eventsgift = form.save(commit=False)
+            print('request>>>> ' + str(request))
+            print('request.POST>>>> ' + str(request.POST))
+            eventsgift.id_event = request.POST['id_event']
+            eventsgift.id_gift = request.POST['id_gift']
+            eventsgift.save()
+            return redirect('add_eventsgift')
+    else:
+        form = EventsGiftForm()
 
     return render(
         request,
         'catalog/add_eventsgift.html',
-        context={'events': events, 'gifts': gifts, 'eventsgift': eventsgift},
+        context={'events': events, 'gifts': gifts, 'form': form},
     )
