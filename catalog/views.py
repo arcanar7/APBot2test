@@ -102,3 +102,15 @@ class EventsGiftDetailView(generic.CreateView):
 
     def all_events(self):
         return EventsDescript.objects.all()
+
+
+def add_eventsgift(request):
+    events = EventsDescript.objects.all()
+    gifts = GiftDescript.objects.all()
+    eventsgift = EventsGift
+
+    return render(
+        request,
+        'catalog/add_eventsgift.html',
+        context={'events': events, 'gifts': gifts, 'eventsgift': eventsgift},
+    )
