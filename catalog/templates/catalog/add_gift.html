@@ -1,14 +1,13 @@
 {% extends "base_generic.htm" %}
 {% load static %}
 {% block content %}
+<h1>Карточка подарка</h1>
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Добро пожаловать</h2>
-      <p class="lead">Добавить новый подарок</p>
+      <h2>Добавить новый подарок</h2>
   </div>
   <div class="row">
       <div class="col-md-8 order-md-1" style="margin: auto;">
-          <h4 class="mb-3">Карточка добавления нового подарка</h4>
               <form action="." method="post" class="needs-validation" novalidate="">
                   {% csrf_token %}
                     <div class="row">

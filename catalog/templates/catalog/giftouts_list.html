@@ -5,17 +5,22 @@
     <h1>Подарки пользователей</h1>
 
     {% if giftouts_list %}
-    <ul>
-
-      {% for giftOuts in giftouts_list %}
-      <li>
-        <a href="{{ giftOuts.get_absolute_url }}">{{ giftOuts.display_phone }}
-          {{giftOuts.display_gift}}
-          Статус: {{giftOuts.status}}</a>
-      </li>
-      {% endfor %}
-
-    </ul>
+    <table border="2">
+        <tbody>
+            <tr align="center">
+                <th style="padding: 5px;">Название подарка</th>
+                <th style="padding: 5px;">Номер телефона пользователя</th>
+                <th style="padding: 5px;">Статус подарка</th>
+            </tr>
+            {% for giftouts in giftouts_list %}
+                <tr align="center">
+                    <td style="padding: 5px;"><a href="{{path}}/catalog/gift_descript/{{giftouts.display_gift.id}}">{{ giftouts.display_gift.name }}</a></td>
+                    <td style="padding: 5px;"><a href="{{path}}/catalog/users/{{giftouts.display_phone.id}}">{{ giftouts.display_phone.phone }}</a></td>
+                    <td style="padding: 5px;"><a href="{{ giftouts.get_absolute_url }}">{{ giftouts.status}}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
 
     {% endif %}

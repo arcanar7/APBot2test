@@ -4,17 +4,23 @@
     <h1>Подарки</h1>
 
     {% if giftdescript_list %}
-    <ul>
-
-      {% for giftDescript in giftdescript_list %}
-      <li>
-        <a href="{{ giftDescript.get_absolute_url }}">{{ giftDescript.name }}</a>
-      </li>
-      {% endfor %}
-
-    </ul>
+    <table border="2">
+        <tbody>
+            <tr align="center">
+                <th style="padding: 5px;">Название</th>
+                <th style="padding: 5px;">Количество</th>
+            </tr>
+            {% for giftDescript in giftdescript_list %}
+                <tr align="left">
+                    <td style="padding: 5px;"><a href="{{ giftDescript.get_absolute_url }}">{{ giftDescript.name}}</a></td>
+                    <td align="center" style="padding: 5px;"> {{ giftDescript.cnt}} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
       <p>Пусто</p>
     {% endif %}
+<hr class="mb-4">
 <button class="btn btn-primary btn-lg btn-block" onClick="window.location.href='{{request.path}}new/'" type="submit" style="width: 25%;margin-left: 25px;">Добавить</button>
 {% endblock %}

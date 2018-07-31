@@ -2,7 +2,7 @@
 {% block content %}
 <form action="" method="post" class="needs-validation" novalidate="">
   {% csrf_token %}
-  <h1>Название подарка: {{ giftouts.display_gift }}</h1>
+  <h1>Название подарка: {{ giftouts.display_gift.name }}</h1>
   <ul>
     <li><strong>Пользователь:</strong> {{ giftouts.display_name }}</li>
     <li><strong>Статус подарка: </strong><select name="{{form.status.name}}">
@@ -15,7 +15,7 @@
     </select>
     </li>
     <li><strong>id пользователя:</strong> {{ giftouts.id_user }}</li>
-    <li><strong>Номер телефона:</strong> {{ giftouts.display_phone }}</li>
+    <li><strong>Номер телефона:</strong> {{ giftouts.display_phone.phone }}</li>
   </ul>
   <button class="btn btn-primary btn-lg btn-block" type="submit" style="width: 150px; margin-left: 50px;">Сохранить</button>
 </form>

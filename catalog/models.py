@@ -129,6 +129,15 @@ class EventsDescript(models.Model):
     def get_absolute_url(self):
         return reverse('events_descript-detail', args=[str(self.pk)])
 
+    def get_gifts(self):
+        gift = list(EventsGift.objects.filter(id_event=self.pk).values("id_gift"))
+        gift_out = []
+        for item in gift:
+            gift_name = GiftDescript.objects.filter(id=item['id_gift']).values("name")[0]['name']
+            item['gift_name'] = gift_name
+            gift_out.append(item)
+        return gift_out
+
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'События'
@@ -187,13 +196,13 @@ class GiftOuts(models.Model):
 
     def display_gift(self):
         gift = EventsGift.objects.filter(id=self.id_event_gift).values("id_gift")[0]['id_gift']
-        return GiftDescript.objects.filter(id=gift).values("name")[0]['name']
+        return GiftDescript.objects.filter(id=gift).values("name", "id")[0]
 
     def display_name(self):
         return Users.objects.filter(id_user=self.id_user).values("name")[0]['name']
 
     def display_phone(self):
-        return Users.objects.filter(id_user=self.id_user).values("phone")[0]['phone']
+        return Users.objects.filter(id_user=self.id_user).values("phone", "id")[0]
 
     def get_absolute_url(self):
         return reverse('gift_outs-detail', args=[str(self.pk)])

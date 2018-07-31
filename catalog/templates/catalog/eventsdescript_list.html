@@ -4,17 +4,29 @@
     <h1>События</h1>
 
     {% if eventsdescript_list %}
-    <ul>
-
-      {% for EventsDescript in eventsdescript_list %}
-      <li>
-        <a href="{{ EventsDescript.get_absolute_url }}">{{ EventsDescript.name }}</a>
-      </li>
-      {% endfor %}
-
-    </ul>
+    <table border="2">
+        <tbody>
+            <tr align="center">
+                <th style="padding: 5px;">Название</th>
+                <th style="padding: 5px;">Описание</th>
+                <th style="padding: 5px;">Подарки</th>
+            </tr>
+            {% for eventsdescript in eventsdescript_list %}
+                <tr align="left">
+                    <td style="padding: 5px;"><a href="{{ eventsdescript.get_absolute_url }}">{{ eventsdescript.name}}</a></td>
+                    <td align="center" style="padding: 5px;"> {{ eventsdescript.descript}} </td>
+                    <td>
+                        {% for item in eventsdescript.get_gifts %}
+                        <ul><li><a href="{{path}}/catalog/gift_descript/{{item.id_gift}}">{{ item.gift_name }}</a></li></ul>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
       <p>Пусто</p>
     {% endif %}
-<button class="btn btn-primary btn-lg btn-block" onClick="window.location.href='{{request.path}}new/'" type="submit" style="width: 25%;margin-left: 25px;">Добавить</button>
+<hr class="mb-4">
+<button class="btn btn-primary btn-lg btn-block" onClick="window.location.href='{{request.path}}new/'" type="submit" style="width: 25%;margin-left: 25px;">Добавить событие</button>
 {% endblock %}

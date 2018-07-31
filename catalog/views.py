@@ -52,7 +52,7 @@ class UsersDetailView(generic.DetailView):
 
 class EventsDescriptListView(generic.ListView):
     model = EventsDescript
-    paginate_by = 25
+    paginate_by = 10
 
 
 class EventsDescriptDetailView(generic.UpdateView):
