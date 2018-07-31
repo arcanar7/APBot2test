@@ -5,7 +5,7 @@
   <h1>Название подарка: {{ giftouts.display_gift.name }}</h1>
   <ul>
     <li><strong>Пользователь:</strong> {{ giftouts.display_name }}</li>
-    <li><strong>Статус подарка: </strong><select name="{{form.status.name}}">
+    <li><strong>Статус подарка: </strong><select name="{{form.status.name}}" style="color: black;background: white;">
       <option selected value="{{form.status.value}}">{{form.status.value}}</option>
       {% if form.status.value == "Выдан" %}
         <option value="Ожидает выдачи">Ожидает выдачи</option>
