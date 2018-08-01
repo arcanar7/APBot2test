@@ -19,18 +19,10 @@
         <tr align="center">
             <th>Имя</th>
             <th>Телефон</th>
-            <th>id пользователя</th>
-            <th>id пригласившего</th>
             <th>Дата рождения</th>
             <th>Дата регистрации</th>
         </tr>
         <tr class='table-filters'>
-            <td>
-            <input type="text"/>
-            </td>
-            <td>
-            <input type="text"/>
-            </td>
             <td>
             <input type="text"/>
             </td>
@@ -48,8 +40,6 @@
             <tr align="center" class="table-data">
                 <td> {{ us.name}} </td>
                 <td><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
-                <td> {{us.id_user}} </td>
-                <td> {{us.id_invite}} </td>
                 <td> {{us.dt_birth|date:"d.m.Y"}} </td>
                 <td> {{us.dt_add|date:"d.m.Y"}} </td>
             </tr>
