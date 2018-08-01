@@ -4,19 +4,11 @@ from django.views import generic
 from telebot import TeleBot
 from .config import token
 from .forms import EventsGiftForm
+from django.contrib.auth.decorators import login_required
 
 
-def my_view(request):
-    print("blablabla:")
-    print(request.user.is_authenticated)
-    if not request.user.is_authenticated:
-        print("Hello")
-        return redirect('http://yandex.ru/')
-        # redirect('%s/catalog/accounts/login/?next=/catalog/' % request.path)
-
-
+@login_required
 def index(request):
-    my_view(request)
     num_events_descript = EventsDescript.objects.all().count()
     num_users = Users.objects.all().count()
     num_gifts = GiftDescript.objects.all().count()
