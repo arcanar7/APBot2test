@@ -1,21 +1,21 @@
 from django.conf.urls import url, include
 from . import views
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    url(r'^users/$', views.UsersListView.as_view(), name='users'),
-    url(r'^users/(?P<pk>\d+)$', views.UsersDetailView.as_view(), name='users-detail'),
-    url(r'^events_descript/$', views.EventsDescriptListView.as_view(), name='events_descript'),
-    url(r'^events_descript/(?P<pk>\d+)$', views.EventsDescriptDetailView.as_view(), name='events_descript-detail'),
-    url(r'^events_descript/new/$', views.EventsDescript_new.as_view(), name='events_descript-new'),
-    url(r'^gift_descript/$', views.GiftDescriptListView.as_view(), name='gift_descript'),
-    url(r'^gift_descript/(?P<pk>\d+)$', views.GiftDescriptDetailView.as_view(), name='gift_descript-detail'),
-    url(r'^gift_descript/new/$', views.GiftDescript_new.as_view(), name='gift_descript-new'),
-    url(r'^gift_outs/$', views.GiftOutsListView.as_view(), name='gift_outs'),
-    url(r'^gift_outs/(?P<pk>\d+)$', views.GiftOutsDetailView.as_view(), name='gift_outs-detail'),
-    url(r'^add_eventsgift/$', views.add_eventsgift, name='add_eventsgift'),
-    url(r'^send_message/$', views.send_message, name='send_message'),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+    path('', login_required(views.index), name='index'),
+    url(r'^users/$', login_required(views.UsersListView.as_view()), name='users'),
+    url(r'^users/(?P<pk>\d+)$', login_required(views.UsersDetailView.as_view()), name='users-detail'),
+    url(r'^events_descript/$', login_required(views.EventsDescriptListView.as_view()), name='events_descript'),
+    url(r'^events_descript/(?P<pk>\d+)$', login_required(views.EventsDescriptDetailView.as_view()), name='events_descript-detail'),
+    url(r'^events_descript/new/$', login_required(views.EventsDescript_new.as_view()), name='events_descript-new'),
+    url(r'^gift_descript/$', login_required(views.GiftDescriptListView.as_view()), name='gift_descript'),
+    url(r'^gift_descript/(?P<pk>\d+)$', login_required(views.GiftDescriptDetailView.as_view()), name='gift_descript-detail'),
+    url(r'^gift_descript/new/$', login_required(views.GiftDescript_new.as_view()), name='gift_descript-new'),
+    url(r'^gift_outs/$', login_required(views.GiftOutsListView.as_view()), name='gift_outs'),
+    url(r'^gift_outs/(?P<pk>\d+)$', login_required(views.GiftOutsDetailView.as_view()), name='gift_outs-detail'),
+    url(r'^add_eventsgift/$', login_required(views.add_eventsgift), name='add_eventsgift'),
+    url(r'^send_message/$', login_required(views.send_message), name='send_message'),
 ]

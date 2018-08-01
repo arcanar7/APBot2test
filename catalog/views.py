@@ -4,15 +4,12 @@ from django.views import generic
 from telebot import TeleBot
 from .config import token
 from .forms import EventsGiftForm
-from django.contrib.auth.decorators import login_required
 
 
-@login_required
 def index(request):
     num_events_descript = EventsDescript.objects.all().count()
     num_users = Users.objects.all().count()
     num_gifts = GiftDescript.objects.all().count()
-
     # Отрисовка HTML-шаблона index.html с данными внутри
     # переменной контекста context
 

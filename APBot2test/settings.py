@@ -142,4 +142,4 @@ STATIC_URL = '/static/'
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 INTERNAL_IPS = '127.0.0.1'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'accounts/login/'
+LOGIN_URL = '/accounts/login/'
