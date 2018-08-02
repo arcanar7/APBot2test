@@ -9,5 +9,5 @@ class EventsGiftForm(forms.ModelForm):
         fields = ('id_event', 'id_gift',)
 
 
-class SendMSG(forms.ModelForm):
+class SendMSG(forms.Form):
     msg = forms.CharField(label='Message', max_length=500)

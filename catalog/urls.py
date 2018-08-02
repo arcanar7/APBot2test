@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^gift_outs/(?P<pk>\d+)$', login_required(views.GiftOutsDetailView.as_view()), name='gift_outs-detail'),
     url(r'^add_eventsgift/$', login_required(views.add_eventsgift), name='add_eventsgift'),
     url(r'^send_message/$', login_required(views.send_message), name='send_message'),
+    url(r'^message_ok/$', login_required(views.message_ok), name='message_ok'),
 ]

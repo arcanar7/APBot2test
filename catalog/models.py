@@ -152,8 +152,8 @@ class EventsGift(models.Model):
     def __str__(self):
         return self.id_event
 
-    def all_events(self):
-        return EventsDescript.objects.all()
+    # def all_events(self):
+    #     return EventsDescript.objects.all()
 
     def display_event(self):
         return EventsDescript.objects.filter(id=self.id_event).values("name")[0]['name']

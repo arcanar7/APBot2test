@@ -3,7 +3,7 @@ from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
 from django.views import generic
 from telebot import TeleBot
 from .config import token
-from .forms import EventsGiftForm
+from .forms import EventsGiftForm, SendMSG
 
 
 def index(request):
@@ -19,14 +19,6 @@ def index(request):
         context={'num_events_descript': num_events_descript, 'num_users': num_users,
                  'num_gifts': num_gifts},
     )
-
-
-def send_message2():
-    users = Users.objects.all()
-    bot = TeleBot(token)
-    for user in users:
-        print(user)
-        bot.send_message(user.id_user, "test message")
 
 
 class UsersListView(generic.ListView):
@@ -83,15 +75,6 @@ class GiftOutsDetailView(generic.UpdateView):
     fields = ['status']
 
 
-class EventsGiftDetailView(generic.CreateView):
-    model = EventsGift
-    fields = ['id_event', 'id_gift']
-    template_name = "catalog/add_eventsgift.html"
-
-    def all_events(self):
-        return EventsDescript.objects.all()
-
-
 def add_eventsgift(request):
     events = EventsDescript.objects.all()
     gifts = GiftDescript.objects.all()
@@ -116,12 +99,24 @@ def add_eventsgift(request):
 def send_message(request):
     users = Users.objects.all()
     bot = TeleBot(token)
-    print(users)
-
-
+    form = SendMSG()
+    if request.method == "POST":
+        form = SendMSG(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            for user in users:
+                bot.send_message(user.id_user, cd['msg'])
+            return redirect('message_ok')
 
     return render(
         request,
         'catalog/send_message.html',
-        context={'users': users, 'bot': bot},
+        context={'form': form},
+    )
+
+
+def message_ok(request):
+    return render(
+        request,
+        'catalog/message_ok.html',
     )
