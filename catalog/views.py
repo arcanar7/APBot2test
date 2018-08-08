@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import EventsDescript, EventsGift, Users, GiftDescript, GiftOuts
+from .models import EventsDescript, Users, GiftDescript, GiftOuts
 from django.views import generic
 from telebot import TeleBot
 from .config import token
@@ -10,8 +10,6 @@ def index(request):
     num_events_descript = EventsDescript.objects.all().count()
     num_users = Users.objects.all().count()
     num_gifts = GiftDescript.objects.all().count()
-    # Отрисовка HTML-шаблона index.html с данными внутри
-    # переменной контекста context
 
     return render(
         request,
