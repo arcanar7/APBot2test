@@ -20,12 +20,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import RedirectView
 from django.conf.urls import include
-# import debug_toolbar
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path(r'__debug__/', include(debug_toolbar.urls)),
     url(r'^catalog/', include('catalog.urls')),
     url(r'^$', RedirectView.as_view(url='/catalog/', permanent=True)),
     url(r'^accounts/', include('django.contrib.auth.urls')),
