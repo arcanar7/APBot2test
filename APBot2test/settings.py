@@ -15,7 +15,7 @@ import configparser
 
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read("/home/adm1n01//bots/kidsReferal/env/APBot2test/config.ini")
 token = config["DEFAULT"]["token"]
 db_file = config["Bot Specific"]["db_file"]
 host = config["Bot Specific"]["host"]
