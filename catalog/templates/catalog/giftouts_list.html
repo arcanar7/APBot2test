@@ -1,27 +1,73 @@
 {% extends "base_generic.htm" %}
 
 {% block content %}
-
+<style>
+    #filter-table{
+        width: 100%;
+    }
+    #filter-table th{
+        background-color: #dadada;
+    }
+    #filter-table td, #filter-table th{
+        padding: 1px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
     <h1>Подарки пользователей</h1>
-
+<div>
     {% if giftouts_list %}
-    <table border="2">
+    <table cellpadding="2" border="2" class="table table-hover table-condensed" id="filter-table">
         <tbody>
             <tr align="center">
                 <th style="padding: 5px;">Название подарка</th>
                 <th style="padding: 5px;">Номер телефона пользователя</th>
                 <th style="padding: 5px;">Статус подарка</th>
             </tr>
+            <tr class='table-filters'>
+                <td><input type="text" size="40%"/></td>
+                <td><input type="text" size="30%"/></td>
+                <td><input type="text" size="30%"/></td>
+            </tr>
             {% for giftouts in giftouts_list %}
-                <tr align="center">
+                <tr align="center" class="table-data">
                     <td style="padding: 5px;"><a href="{{path}}/catalog/gift_descript/{{giftouts.display_gift.id}}">{{ giftouts.display_gift.name }}</a></td>
                     <td style="padding: 5px;"><a href="{{path}}/catalog/users/{{giftouts.display_phone.id}}">{{ giftouts.display_phone.phone }}</a></td>
                     <td style="padding: 5px;"><a href="{{ giftouts.get_absolute_url }}">{{ giftouts.status}}</a></td>
                 </tr>
+            {% empty %}
+            <tr>Список подарков пользователей пуст.</tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
 
     {% endif %}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$('.table-filters input').on('input', function () {
+    filterTable($(this).parents('table'));
+});
+
+function filterTable($table) {
+    var $filters = $table.find('.table-filters td');
+    var $rows = $table.find('.table-data');
+    $rows.each(function (rowIndex) {
+        var valid = true;
+        $(this).find('td').each(function (colIndex) {
+            if ($filters.eq(colIndex).find('input').val()) {
+                if ($(this).html().toLowerCase().indexOf(
+                $filters.eq(colIndex).find('input').val().toLowerCase()) == -1) {
+                    valid = valid && false;
+                }
+            }
+        });
+        if (valid === true) {
+            $(this).css('display', '');
+        } else {
+            $(this).css('display', 'none');
+        }
+    });
+}
+</script>
 {% endblock %}
