@@ -21,8 +21,12 @@
             <th>Телефон</th>
             <th>Дата рождения</th>
             <th>Дата регистрации</th>
+            <th>id пользователя</th>
+            <th>id пригласившего</th>
         </tr>
         <tr class='table-filters'>
+            <td><input type="text"/></td>
+            <td><input type="text"/></td>
             <td><input type="text"/></td>
             <td><input type="text"/></td>
             <td><input type="text"/></td>
@@ -34,6 +38,8 @@
                 <td><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
                 <td> {{us.dt_birth|date:"d.m.Y"}} </td>
                 <td> {{us.dt_add|date:"d.m.Y"}} </td>
+                <td> {{ us.id_user}} </td>
+                <td> {{ us.id_invite}} </td>
             </tr>
         {% empty %}
             <tr>Список пользователей пуст.</tr>

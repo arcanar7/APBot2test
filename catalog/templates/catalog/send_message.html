@@ -5,7 +5,10 @@
 <h1>Отправить сообщение пользователям</h1>
 <form action="" method="post" class="needs-validation" novalidate="">
     {% csrf_token %}
-    <textarea rows="10" cols="45" name="{{form.msg.name}}" style="height: 208px; resize: none;">Введите текст сообщения</textarea>
+    <div>Кому:</div>
+    <textarea title="Введите id пользователей через ';' без пробелов. Оставьте поле пустым, чтобы отправить всем" cols="45" name="{{form.contacts.name}}" style="height: 104px; resize: none;"></textarea>
+    <div>Текст сообщения:</div>
+    <textarea title="Введите текст сообщения" cols="45" name="{{form.msg.name}}" style="height: 208px; resize: none;" required></textarea>
     <button class="btn btn-primary btn-lg btn-block" style="width: 25%; margin-top: 15px;" type="submit">Отправить сообщение</button>
 </form>
 {% endblock %}

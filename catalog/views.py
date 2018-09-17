@@ -95,15 +95,26 @@ def add_eventsgift(request):
 
 
 def send_message(request):
-    users = Users.objects.all()
+    users = list(Users.objects.all().values('id_user'))
+    spisok1 = []
+    for user in users:
+        spisok1.append(user['id_user'])
     bot = TeleBot(token)
     form = SendMSG()
     if request.method == "POST":
         form = SendMSG(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            for user in users:
-                bot.send_message(user.id_user, cd['msg'])
+            spisok = []
+            if cd['contacts'] == '':
+                spisok = set(spisok1)
+            else:
+                spisok = set(cd['contacts'].split(';'))
+            for user in spisok:
+                try:
+                    bot.send_message(user, cd['msg'])
+                except:
+                    return redirect('message_error')
             return redirect('message_ok')
 
     return render(
@@ -117,4 +128,11 @@ def message_ok(request):
     return render(
         request,
         'catalog/message_ok.html',
+    )
+
+
+def message_error(request):
+    return render(
+        request,
+        'catalog/message_error.html',
     )
