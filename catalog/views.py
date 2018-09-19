@@ -154,21 +154,3 @@ def add_gift(request):
         request,
         'catalog/add_gift.html', {'form': form}
     )
-
-
-def change_gift(request):
-    form = GiftDescriptForm()
-    if request.method == 'POST':
-        form = GiftDescriptForm(request.POST, request.FILES)
-        if form.is_valid():
-            giftdescript = form.save(commit=False)
-            giftdescript.name = request.POST['name']
-            giftdescript.cnt = request.POST['cnt']
-            giftdescript.img = request.FILES['img']
-            giftdescript.save()
-            return redirect('gift_descript')
-
-    return render(
-        request,
-        'catalog/change_gift.html', {'form': form}
-    )
