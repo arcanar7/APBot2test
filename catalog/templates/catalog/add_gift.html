@@ -8,7 +8,7 @@
   </div>
   <div class="row">
       <div class="col-md-8 order-md-1" style="margin: auto;">
-              <form action="." method="post" class="needs-validation" novalidate="">
+              <form action="." method="post" class="needs-validation" novalidate="" enctype="multipart/form-data">
                   {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -28,6 +28,12 @@
                                     </div>
                         </div>
                     </div>
+                  <p>{{ form.non_field_errors }}</p>
+                  <p><label>Загрузите изображение:</label></p>
+                  <p>
+                        {{ form.img.errors }}
+                        {{ form.img }}
+                  </p>
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Сохранить</button>
               </form>

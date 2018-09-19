@@ -1,5 +1,5 @@
 from django import forms
-from .models import EventsGift
+from .models import EventsGift, GiftDescript
 
 
 class EventsGiftForm(forms.ModelForm):
@@ -12,3 +12,10 @@ class EventsGiftForm(forms.ModelForm):
 class SendMSG(forms.Form):
     msg = forms.CharField(label='Message', max_length=500)
     contacts = forms.CharField(label='Contacts', required=False)
+
+
+class GiftDescriptForm(forms.ModelForm):
+
+    class Meta:
+        model = GiftDescript
+        fields = ('name', 'cnt', 'img')

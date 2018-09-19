@@ -16,6 +16,7 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read("/home/adm1n01//bots/kidsReferal/env/APBot2test/config.ini")
+# config.read("config.ini")
 token = config["DEFAULT"]["token"]
 db_file = config["Bot Specific"]["db_file"]
 host = config["Bot Specific"]["host"]
@@ -77,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -138,6 +140,9 @@ USE_TZ = True
 
 STATIC_ROOT = '/home/adm1n01//bots/kidsReferal/env/APBot2test/catalog/static/'
 STATIC_URL = '/static/'
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
 INTERNAL_IPS = '127.0.0.1'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'

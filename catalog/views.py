@@ -3,7 +3,7 @@ from .models import EventsDescript, Users, GiftDescript, GiftOuts
 from django.views import generic
 from telebot import TeleBot
 from .config import token
-from .forms import EventsGiftForm, SendMSG
+from .forms import EventsGiftForm, SendMSG, GiftDescriptForm
 
 
 def index(request):
@@ -53,7 +53,7 @@ class GiftDescriptListView(generic.ListView):
 class GiftDescriptDetailView(generic.UpdateView):
     model = GiftDescript
     template_name = "catalog/change_gift.html"
-    fields = ['name', 'cnt']
+    fields = ['name', 'cnt', 'img']
 
 
 class GiftDescript_new(generic.CreateView):
@@ -135,4 +135,40 @@ def message_error(request):
     return render(
         request,
         'catalog/message_error.html',
+    )
+
+
+def add_gift(request):
+    form = GiftDescriptForm()
+    if request.method == 'POST':
+        form = GiftDescriptForm(request.POST, request.FILES)
+        if form.is_valid():
+            giftdescript = form.save(commit=False)
+            giftdescript.name = request.POST['name']
+            giftdescript.cnt = request.POST['cnt']
+            giftdescript.img = request.FILES['img']
+            giftdescript.save()
+            return redirect('gift_descript')
+
+    return render(
+        request,
+        'catalog/add_gift.html', {'form': form}
+    )
+
+
+def change_gift(request):
+    form = GiftDescriptForm()
+    if request.method == 'POST':
+        form = GiftDescriptForm(request.POST, request.FILES)
+        if form.is_valid():
+            giftdescript = form.save(commit=False)
+            giftdescript.name = request.POST['name']
+            giftdescript.cnt = request.POST['cnt']
+            giftdescript.img = request.FILES['img']
+            giftdescript.save()
+            return redirect('gift_descript')
+
+    return render(
+        request,
+        'catalog/change_gift.html', {'form': form}
     )
