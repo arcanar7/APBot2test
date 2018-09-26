@@ -4,7 +4,7 @@ from django.views import generic
 from telebot import TeleBot
 from .config import token
 from .forms import EventsGiftForm, SendMSG, GiftDescriptForm
-import django_excel as excel
+# import django_excel as excel
 
 
 def index(request):
