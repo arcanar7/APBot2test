@@ -157,13 +157,13 @@ def add_gift(request):
     )
 
 
-def export_data():
-    question = Question.objects.get(slug='ide')
-    query_sets = Choice.objects.filter(question=question)
-    column_names = ['choice_text', 'id', 'votes']
-    return excel.make_response_from_query_sets(
-        query_sets,
-        column_names,
-        'xls',
-        file_name="custom"
-    )
+# def export_data():
+#     question = Question.objects.get(slug='ide')
+#     query_sets = Choice.objects.filter(question=question)
+#     column_names = ['choice_text', 'id', 'votes']
+#     return excel.make_response_from_query_sets(
+#         query_sets,
+#         column_names,
+#         'xls',
+#         file_name="custom"
+#     )
