@@ -138,6 +138,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
+
+
 STATIC_ROOT = '/home/adm1n01//bots/kidsReferal/env/APBot2test/catalog/static/'
 STATIC_URL = '/static/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
