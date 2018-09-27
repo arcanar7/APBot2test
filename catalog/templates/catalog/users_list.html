@@ -14,8 +14,8 @@
 </style>
 <h1>Все пользователи</h1>
 <div>
-<table cellpadding="2" border="2" class="table table-hover table-condensed" id="filter-table">
-    <tbody>
+<table width="100%" cellpadding="2" border="2" class="table table-hover table-condensed" id="filter-table">
+    <tbody style="width: 100%;">
         <tr align="center">
             <th>Имя</th>
             <th>Телефон</th>
@@ -35,13 +35,13 @@
         </tr>
         {% for us in users_list %}
             <tr align="center" class="table-data">
-                <td> {{ us.name}} </td>
-                <td><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
-                <td> {{us.dt_birth|date:"d.m.Y"}} </td>
-                <td> {{us.dt_add|date:"d.m.Y"}} </td>
-                <td> {{ us.id_user}} </td>
-                <td> {{ us.id_invite}} </td>
-                <td><a href="{{ us.get_absolute_url }}/excel/">Excel</a></td>
+                <td style="width: 100%;"> {{ us.name}} </td>
+                <td style="width: 100%;"><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
+                <td style="width: 100%;"> {{us.dt_birth|date:"d.m.Y"}} </td>
+                <td style="width: 100%;"> {{us.dt_add|date:"d.m.Y"}} </td>
+                <td style="width: 100%;"> {{ us.id_user}} </td>
+                <td style="width: 100%;"> {{ us.id_invite}} </td>
+                <td style="width: 100%;"><a href="{{ us.get_absolute_url }}/excel/">Excel</a></td>
             </tr>
         {% empty %}
             <tr>Список пользователей пуст.</tr>
