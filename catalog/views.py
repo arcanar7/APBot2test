@@ -4,7 +4,7 @@ from django.views import generic
 from telebot import TeleBot
 from .config import token
 from .forms import EventsGiftForm, SendMSG, GiftDescriptForm
-# import django_excel as excel
+import django_excel as excel
 
 
 def index(request):
@@ -157,13 +157,30 @@ def add_gift(request):
     )
 
 
-# def export_data():
-#     question = Question.objects.get(slug='ide')
-#     query_sets = Choice.objects.filter(question=question)
-#     column_names = ['choice_text', 'id', 'votes']
-#     return excel.make_response_from_query_sets(
-#         query_sets,
-#         column_names,
-#         'xls',
-#         file_name="custom"
-#     )
+def export_users(request):
+    users = Users.objects.all()
+    column_names = ['dt_add', 'id_user', 'id_invite', 'name', 'phone', 'dt_birth']
+    return excel.make_response_from_query_sets(
+        users,
+        column_names,
+        'xls',
+        file_name="custom"
+    )
+
+
+def export_user(request, pk):
+    users = Users.objects.filter(pk=pk)
+    # user = Users.objects.get(pk=pk)
+    # gifts = user.get_gifts()
+    # stroka = ''
+    # for gift in gifts:
+    #     stroka += gift['gift_name'] + ", Статус: " + gift['status'] + "; \n"
+    # users['Подарки'] = stroka
+    column_names = ['dt_add', 'id_user', 'id_invite', 'name', 'phone', 'dt_birth']
+    return excel.make_response_from_query_sets(
+        users,
+        column_names,
+        'xls',
+        file_name="custom"
+    )
+
