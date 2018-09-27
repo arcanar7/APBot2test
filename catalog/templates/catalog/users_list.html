@@ -14,16 +14,16 @@
 </style>
 <h1>Все пользователи</h1>
 <div>
-<table width="100%" cellpadding="2" border="2" class="table table-hover table-condensed" id="filter-table">
-    <tbody style="width: 100%;">
+<table cellpadding="5" border="2" class="table table-hover table-condensed" id="filter-table">
+    <tbody>
         <tr align="center">
-            <th>Имя</th>
-            <th>Телефон</th>
-            <th>Дата рождения</th>
-            <th>Дата регистрации</th>
-            <th>id пользователя</th>
-            <th>id пригласившего</th>
-            <th>Выгрузить</th>
+            <th style="width: 100%; padding: 5px">Имя</th>
+            <th style="width: 100%; padding: 5px">Телефон</th>
+            <th style="width: 100%; padding: 5px">Дата рождения</th>
+            <th style="width: 100%; padding: 5px">Дата регистрации</th>
+            <th style="width: 100%; padding: 5px">id пользователя</th>
+            <th style="width: 100%; padding: 5px">id пригласившего</th>
+            <th style="width: 100%; padding: 5px">Выгрузить</th>
         </tr>
         <tr class='table-filters'>
             <td><input style="width: 100%;" type="text"/></td>
@@ -35,13 +35,13 @@
         </tr>
         {% for us in users_list %}
             <tr align="center" class="table-data">
-                <td style="width: 100%;"> {{ us.name}} </td>
-                <td style="width: 100%;"><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
-                <td style="width: 100%;"> {{us.dt_birth|date:"d.m.Y"}} </td>
-                <td style="width: 100%;"> {{us.dt_add|date:"d.m.Y"}} </td>
-                <td style="width: 100%;"> {{ us.id_user}} </td>
-                <td style="width: 100%;"> {{ us.id_invite}} </td>
-                <td style="width: 100%;"><a href="{{ us.get_absolute_url }}/excel/">Excel</a></td>
+                <td style="width: 100%; padding: 5px"> {{ us.name}} </td>
+                <td style="width: 100%; padding: 5px"><a href="{{ us.get_absolute_url }}">{{us.phone}}</a></td>
+                <td style="width: 100%; padding: 5px"> {{us.dt_birth|date:"d.m.Y"}} </td>
+                <td style="width: 100%; padding: 5px"> {{us.dt_add|date:"d.m.Y"}} </td>
+                <td style="width: 100%; padding: 5px"> {{ us.id_user}} </td>
+                <td style="width: 100%; padding: 5px"> {{ us.id_invite}} </td>
+                <td style="width: 100%; padding: 5px"><a href="{{ us.get_absolute_url }}/excel/">Excel</a></td>
             </tr>
         {% empty %}
             <tr>Список пользователей пуст.</tr>
