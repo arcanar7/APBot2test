@@ -22,7 +22,7 @@ def index(request):
 
 class UsersListView(generic.ListView):
     model = Users
-    paginate_by = 25
+    paginate_by = 200
 
 
 class UsersDetailView(generic.DetailView):
@@ -103,7 +103,7 @@ def send_message(request):
     bot = TeleBot(token)
     form = SendMSG()
     if request.method == "POST":
-        form = SendMSG(request.POST)
+        form = SendMSG(request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
             spisok = []
@@ -113,6 +113,8 @@ def send_message(request):
                 spisok = set(cd['contacts'].split(';'))
             for user in spisok:
                 try:
+                    # Дописать клавиатуры
+                    bot.send_photo(user, cd['img'])
                     bot.send_message(user, cd['msg'])
                 except:
                     return redirect('message_error')
