@@ -5,6 +5,7 @@ from telebot import TeleBot
 from .config import token
 from .forms import EventsGiftForm, SendMSG, GiftDescriptForm
 import django_excel as excel
+from .markups import keyboardMain
 
 
 def index(request):
@@ -113,9 +114,9 @@ def send_message(request):
                 spisok = set(cd['contacts'].split(';'))
             for user in spisok:
                 try:
-                    # Дописать клавиатуры
-                    bot.send_photo(user, cd['img'])
-                    bot.send_message(user, cd['msg'])
+                    if cd['img'] is not None:
+                        bot.send_photo(user, cd['img'], reply_markup=keyboardMain)
+                    bot.send_message(user, cd['msg'], reply_markup=keyboardMain)
                 except:
                     return redirect('message_error')
             return redirect('message_ok')

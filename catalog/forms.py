@@ -12,7 +12,7 @@ class EventsGiftForm(forms.ModelForm):
 class SendMSG(forms.Form):
     msg = forms.CharField(label='Message', max_length=500)
     contacts = forms.CharField(label='Contacts', required=False)
-    img = forms.ImageField()
+    img = forms.ImageField(required=False)
 
 
 class GiftDescriptForm(forms.ModelForm):
