@@ -230,6 +230,8 @@ class Users(models.Model):
     name = models.CharField(max_length=300, blank=True, null=True, verbose_name="Имя пользователя")
     phone = models.CharField(max_length=30, blank=True, null=True, verbose_name="Телефон")
     dt_birth = models.DateTimeField(blank=True, null=True, verbose_name="Дата рождения")
+    status = models.CharField(max_length=30, blank=True, null=True, verbose_name="Статус пользователя")
+    dt_last_up = models.DateTimeField(blank=True, null=True, verbose_name="Дата обновления")
 
     # def __str__(self):
     #     return self.name

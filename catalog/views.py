@@ -6,6 +6,7 @@ from .config import token
 from .forms import EventsGiftForm, SendMSG, GiftDescriptForm
 import django_excel as excel
 from .markups import keyboardMain
+import datetime
 
 
 def index(request):
@@ -117,8 +118,12 @@ def send_message(request):
                     if cd['img'] is not None:
                         bot.send_photo(user, cd['img'], reply_markup=keyboardMain)
                     bot.send_message(user, cd['msg'], reply_markup=keyboardMain)
-                except:
-                    return redirect('message_error')
+                    blocked_user(user, 'Незаблокирован')
+                except Exception as err:
+                    if 'bot was blocked by the user' in str(err):
+                        blocked_user(user, 'Заблокирован')
+                    else:
+                        return redirect('message_error')
             return redirect('message_ok')
 
     return render(
@@ -126,6 +131,13 @@ def send_message(request):
         'catalog/send_message.html',
         context={'form': form},
     )
+
+
+def blocked_user(user, status):
+    blockedUser = Users.objects.get(id_user=user)
+    blockedUser.status = status
+    blockedUser.dt_last_up = datetime.datetime.now()
+    blockedUser.save()
 
 
 def message_ok(request):

@@ -24,6 +24,6 @@ class GiftOutsAdmin(admin.ModelAdmin):
 
 @admin.register(Users)
 class UsersAdmin(admin.ModelAdmin):
-    list_display = ('dt_add', 'id_user', 'id_invite', 'name', 'phone', 'dt_birth')
+    list_display = ('dt_add', 'id_user', 'id_invite', 'name', 'phone', 'dt_birth', 'status', 'dt_last_up')
 
 # Register your models here.
