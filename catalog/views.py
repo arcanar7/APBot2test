@@ -118,7 +118,7 @@ def send_message(request):
                     if cd['img'] is not None:
                         bot.send_photo(user, cd['img'], reply_markup=keyboardMain)
                     bot.send_message(user, cd['msg'], reply_markup=keyboardMain)
-                    blocked_user(user, 'Незаблокирован')
+                    blocked_user(user, 'Не заблокирован')
                 except Exception as err:
                     if 'bot was blocked by the user' in str(err):
                         blocked_user(user, 'Заблокирован')
