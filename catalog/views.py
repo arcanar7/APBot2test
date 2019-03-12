@@ -7,6 +7,7 @@ from .forms import EventsGiftForm, SendMSG, GiftDescriptForm
 import django_excel as excel
 from .markups import keyboardMain
 import datetime
+import logging
 
 
 def index(request):
@@ -120,6 +121,9 @@ def send_message(request):
                     bot.send_message(user, cd['msg'], reply_markup=keyboardMain)
                     blocked_user(user, 'Не заблокирован')
                 except Exception as err:
+                    logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG,
+                                        filename=u'mylog.log')
+                    logging.error(err)
                     if 'bot was blocked by the user' in str(err):
                         blocked_user(user, 'Заблокирован')
                     else:

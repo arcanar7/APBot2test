@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^catalog/', include('catalog.urls')),
     url(r'^$', RedirectView.as_view(url='/catalog/', permanent=True)),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
