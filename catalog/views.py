@@ -8,6 +8,7 @@ import django_excel as excel
 from .markups import keyboardMain
 import datetime
 import logging
+from time import sleep
 
 
 def index(request):
@@ -99,13 +100,14 @@ def add_eventsgift(request):
 
 
 def send_message(request):
-    users = list(Users.objects.all().values('id_user'))
-    spisok1 = []
-    for user in users:
-        spisok1.append(user['id_user'])
-    bot = TeleBot(token)
+    funcount = 0
     form = SendMSG()
     if request.method == "POST":
+        users = list(Users.objects.all().values('id_user'))
+        spisok1 = []
+        for user in users:
+            spisok1.append(user['id_user'])
+        bot = add_bot(funcount)
         form = SendMSG(request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
@@ -120,6 +122,7 @@ def send_message(request):
                         bot.send_photo(user, cd['img'], reply_markup=keyboardMain)
                     bot.send_message(user, cd['msg'], reply_markup=keyboardMain)
                     blocked_user(user, 'Не заблокирован')
+                    sleep(0.04)
                 except Exception as err:
                     logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG,
                                         filename=u'mylog.log')
@@ -135,6 +138,20 @@ def send_message(request):
         'catalog/send_message.html',
         context={'form': form},
     )
+
+
+def add_bot(count):
+    count += 1
+    try:
+        bot = TeleBot(token)
+        return bot
+    except:
+        if count < 10:
+            sleep(1)
+            bot = add_bot(count)
+            return bot
+        else:
+            return count
 
 
 def blocked_user(user, status):
