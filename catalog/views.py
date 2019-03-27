@@ -100,13 +100,13 @@ def add_eventsgift(request):
 
 
 def send_message(request):
-    funcount = 0
     form = SendMSG()
     if request.method == "POST":
         users = list(Users.objects.all().values('id_user'))
         spisok1 = []
         for user in users:
             spisok1.append(user['id_user'])
+        funcount = 0
         bot = add_bot(funcount)
         form = SendMSG(request.POST, request.FILES)
         if form.is_valid():
@@ -147,7 +147,7 @@ def add_bot(count):
         return bot
     except:
         if count < 10:
-            sleep(1)
+            sleep(10)
             bot = add_bot(count)
             return bot
         else:
