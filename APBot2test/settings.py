@@ -15,7 +15,7 @@ import configparser
 
 
 config = configparser.ConfigParser()
-config.read("/home/adm1n01//bots/kidsReferal/env/APBot2test/config.ini")
+config.read("/home/ubuntu/bots/kidsReferal/env/APBot2test/config.ini")
 # config.read("config.ini")
 token = config["DEFAULT"]["token"]
 db_file = config["Bot Specific"]["db_file"]
@@ -40,7 +40,7 @@ SECRET_KEY = KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '95.213.236.53']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '54.186.203.196']
 # ALLOWED_HOSTS = []
 
 # Application definition
@@ -142,7 +142,7 @@ FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
                         "django_excel.TemporaryExcelFileUploadHandler")
 
 
-STATIC_ROOT = '/home/adm1n01//bots/kidsReferal/env/APBot2test/catalog/static/'
+STATIC_ROOT = '/home/ubuntu/bots/kidsReferal/env/APBot2test/catalog/static/'
 STATIC_URL = '/static/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
