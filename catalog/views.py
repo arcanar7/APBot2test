@@ -122,7 +122,7 @@ def send_message(request):
                         bot.send_photo(user, cd['img'], reply_markup=keyboardMain)
                     bot.send_message(user, cd['msg'], reply_markup=keyboardMain)
                     blocked_user(user, 'Не заблокирован')
-                    sleep(0.04)
+                    sleep(2)
                 except Exception as err:
                     logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG,
                                         filename=u'mylog.log')
