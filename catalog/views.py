@@ -199,7 +199,7 @@ def export_users(request):
     return excel.make_response_from_query_sets(
         users,
         column_names,
-        'xlsx',
+        'xls',
         file_name="custom"
     )
 
