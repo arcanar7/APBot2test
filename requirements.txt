@@ -1,6 +1,6 @@
-Django==2.2.3
-mysqlclient==1.4.2.post1
-configparser==3.7.4
-Pillow==6.1.0
-django-excel==0.0.10
-pyexcel-xls==0.5.8
+Django>=2.2.3
+mysqlclient>=1.4.2.post1
+configparser>=3.7.4
+Pillow>=6.1.0
+django-excel>=0.0.10
+pyexcel-xls>=0.5.8
